@@ -1,5 +1,5 @@
 import {useState, useEffect, useContext} from 'react';
-import { useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
@@ -11,8 +11,8 @@ function SignUp (props) {
     const contextInfo = useContext(GlobalContext);
     const {setCurrentUserState, currentUserState, renderURL} = contextInfo;
     const [successfulResgister, setSuccessfulRegister] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-    const location = useLocation();
     const navigate = useNavigate();
 
     const [errorsState, setErrorsState] = useState("");
@@ -32,20 +32,25 @@ function SignUp (props) {
 
     function submitRegister (e) {
         e.preventDefault();
-        if (formState.username === "" || formState.password === "") {
-            setErrorsState("Fields can't be blank!");
+
+        if (confirmPassword === "" || (formState.password !== confirmPassword)) {
+            setErrorsState("Paswords don't match.")
         } else {
-          Axios.post(`${renderURL}/api/auth/register/`, formState)
-            .then((response) => {
-               setCurrentUserState(response.data);
-               setSuccessfulRegister(true);
-                setTimeout(() => {
-                    navigate('/');  
-                }, 1000)
-            })
-            .catch((error) => {
-                setErrorsState("Username already taken.")
-            })  
+           if (formState.username === "" || formState.password === "") {
+                setErrorsState("Fields can't be blank!");
+            } else {
+                 Axios.post(`${renderURL}/api/auth/register/`, formState)
+                    .then((response) => {
+                    setCurrentUserState(response.data);
+                    setSuccessfulRegister(true);
+                        setTimeout(() => {
+                            navigate('/');  
+                        }, 1000)
+                    })
+                    .catch((error) => {
+                        setErrorsState("Username already taken.")
+                    })  
+            } 
         }
          
     }
@@ -81,12 +86,19 @@ function SignUp (props) {
             {errorsState}
         </div>
             <form onSubmit={submitRegister}>
+
                 <div className="user-box">
-                <input onChange={(e) => setUsername(e)} type="text" placeholder='username' required=""/>
+                    <input onChange={(e) => setUsername(e)} type="text" placeholder='username' required=""/>
                 </div>
+
                 <div className="user-box">
-                <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
+                    <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
                 </div>
+
+                <div className="user-box">
+                    <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder='confirm password' required=""/>
+                </div>
+
                 <button type='submit'>
                 <span></span>
                 <span></span>
