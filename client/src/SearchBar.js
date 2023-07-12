@@ -69,7 +69,7 @@ function SearchBar (props) {
         <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
             <div className={`modal-content`}>
                 <p style={{fontSize: '28px', color: 'red'}}>Date's can't be blank!</p>
-                <button className="btn btn-danger btn-lg" style={{width: '40%', margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
+                <button className="btn btn-danger btn-lg" style={{margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
             </div>
         </div>
 

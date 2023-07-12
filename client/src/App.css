@@ -141,6 +141,11 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.532);
   width: 100%;
 }
+@media screen and (max-width: 480px) {
+  .featured-hotels-container {
+    padding: 20px;
+  }
+}
 .featured-hotels {
   display: flex;
   justify-content: space-evenly;
@@ -249,7 +254,7 @@ a:hover {
 }
 @media screen and (max-width: 635px) {
   .single-hotel-listing-container {
-    height: 200px;
+    height: auto;
   }
   .hotel-listing-info {
     text-align: center;
@@ -269,7 +274,12 @@ a:hover {
 }
 @media screen and (max-width: 575px) {
   .single-hotel-listing-container {
-    height: 240px;
+    height: auto;
+  }
+  @media screen and (max-width: 480px) {
+    .single-hotel-listing-container {
+      display: block;
+    }
   }
 }
 
