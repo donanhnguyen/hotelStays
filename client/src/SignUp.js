@@ -38,6 +38,8 @@ function SignUp (props) {
         } else {
            if (formState.username === "" || formState.password === "") {
                 setErrorsState("Fields can't be blank!");
+            } else if (formState.username.length < 3 || formState.password.length < 3) {
+                setErrorsState("Username & password must be at least 3 characters.");
             } else {
                  Axios.post(`${renderURL}/api/auth/register/`, formState)
                     .then((response) => {
