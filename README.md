@@ -1,6 +1,7 @@
 # GalaxyStays
 
 [Live Link](https://galaxystays.onrender.com/)
+[Video Link](https://www.youtube.com/watch?v=mTwPbFX9bGY)
 
 <h1>Description</h1>
 
