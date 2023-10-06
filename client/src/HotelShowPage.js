@@ -15,16 +15,8 @@ function HotelShowPage () {
         renderURL
     } = contextInfo;
 
-    const [hotelRoomsState, setHotelRoomsState] = useState([]);
 
     const hotel = location.state.hotel;
-
-    useEffect(() => {
-        Axios.get(`${renderURL}/api/hotels/${hotel._id}/rooms/`)
-            .then((response) => {
-                setHotelRoomsState(response.data);
-            })
-    }, [])
 
     function navigateToConfirmBookingPage (room) {
         navigate('/ConfirmBookingPage', {state: {room: room, hotel: hotel} }); 
@@ -44,7 +36,7 @@ function HotelShowPage () {
     }
 
     function displayRooms () {
-        const displayedRooms = hotelRoomsState.map((room, i) => {
+        const displayedRooms = hotel.rooms.map((room, i) => {
             return (
                 <div className='single-room-displayed' key={room + i}>
                     <h1>{room.name}</h1>

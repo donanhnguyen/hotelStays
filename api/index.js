@@ -9,7 +9,7 @@ import roomsRoute from './routes/rooms.js'
 import cors from 'cors';
 import Hotel from './models/Hotel.js';
 import Room from './models/Room.js';
-import { seededRooms, seededHotels } from './seed.js';
+import { seededHotels } from './seed.js';
 
 const app = express(); 
 dotenv.config();
@@ -52,5 +52,4 @@ const PORT = process.env.PORT || 8800;
 app.listen(PORT, () => {
     connect(); 
     // Hotel.insertMany(seededHotels);
-    // Room.insertMany(seededRooms);
 })

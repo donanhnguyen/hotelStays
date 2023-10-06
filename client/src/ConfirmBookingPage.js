@@ -22,6 +22,7 @@ function ConfirmBookingPage () {
 
     var bookingDetailsObject = {
         nameOfHotel: hotel.name,
+        hotelId: hotel._id,
         nameOfRoom: room.name,
         totalPrice: dateRangeArray.length * room.price,
         planet: hotel.planet,
@@ -37,7 +38,7 @@ function ConfirmBookingPage () {
             .then((response) => {
               setBookingConfirmationNumber(response.data._id);
             })
-        Axios.put(`${renderURL}/api/hotels/rooms/${room._id}`, 
+        Axios.put(`${renderURL}/api/hotels/${hotel._id}/rooms/${room._id}`, 
         {unavailableDates: room.unavailableDates.concat(dateRangeArray)});
 
         setTimeout(() => {

@@ -7,11 +7,11 @@ const router = express.Router();
 router.get('/:hotelId/rooms/', getAllRoomsFromHotel)
 
 // get single room
-router.get('/rooms/:roomId/', getSingleRoom)
+router.get('/rooms/:hotelId/:roomId/', getSingleRoom)
 
 
 // update a room when booked, update the unavailableDates array by adding in the dates
-router.put('/rooms/:roomId/', updateRoomUnavailableDates)
+router.put('/:hotelId/rooms/:roomId/', updateRoomUnavailableDates)
 
 
 // create a room in hotel

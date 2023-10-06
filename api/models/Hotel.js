@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import Room from "./Room.js";
 
-const {Schema} = mongoose;
-
 const HotelSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -17,15 +15,7 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    rooms: [{
-        type: Schema.Types.ObjectId, 
-        ref: "Room"
-    }]
-})
-
-// doesnt work
-HotelSchema.methods.getRooms = function () {
-    console.log("Get ROOMS!!!!");
-}
+    rooms: [Room.schema] // Use Room.schema to reference the schema
+});
 
 export default mongoose.model("Hotel", HotelSchema);

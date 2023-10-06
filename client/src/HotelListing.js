@@ -8,21 +8,13 @@ function HotelListing (props) {
     const {dateRangeArray, isRoomAvailableOrNot, renderURL} = contextInfo;
 
     const {hotel, navigateToHotelShowPage, sortFilterState} = props;
-    const [roomsState, setRoomsState] = useState([]);
-
-    useEffect(() => {
-        Axios.get(`${renderURL}/api/hotels/${hotel._id}/rooms`)
-            .then((response) => {
-                setRoomsState(response.data);
-            })
-    }, [])
 
     function getStartingPrice () {
-        if (roomsState.length > 0) {
-            var lowest = roomsState[0].price;
-            for (let i in roomsState) {
-                if (roomsState[i].price < lowest) {
-                    lowest = roomsState[i].price;
+        if (hotel.rooms.length > 0) {
+            var lowest = hotel.rooms[0].price;
+            for (let i in hotel.rooms) {
+                if (hotel.rooms[i].price < lowest) {
+                    lowest = hotel.rooms[i].price;
                 }
             }
             return lowest;
@@ -31,8 +23,8 @@ function HotelListing (props) {
 
     function countHowManyAvailableRooms () {
         var numberOfAvailableRooms = 0;
-        for (let i in roomsState) {
-            let currentRoom = roomsState[i];
+        for (let i in hotel.rooms) {
+            let currentRoom = hotel.rooms[i];
             if (isRoomAvailableOrNot(dateRangeArray, currentRoom.unavailableDates)) {
                 numberOfAvailableRooms += 1;
             }
@@ -60,7 +52,7 @@ function HotelListing (props) {
                 <h1>
                     Rooms starting at 
                     {
-                        roomsState.length !== 0 ?
+                        hotel.rooms.length !== 0 ?
                         <p className="price">$ {getStartingPrice()} per night</p> 
                         :
                         ""

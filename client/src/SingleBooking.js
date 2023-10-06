@@ -11,7 +11,7 @@ function SingleBooking (props) {
     const [toggledConfirm, setToggledConfirm] = useState(false);
 
     useEffect(() => {
-        Axios.get(`${renderURL}/api/hotels/rooms/${booking.roomId}`)
+        Axios.get(`${renderURL}/api/hotels/rooms/${booking.hotelId}/${booking.roomId}`)
             .then((response) => {
                 setSingleRoomState(response.data)
             })
@@ -33,7 +33,7 @@ function SingleBooking (props) {
                 .then((response) => console.log(response))
                 .catch((err) => console.log(err))
             // api call to update the room's unavailable dates
-            Axios.put(`${renderURL}/api/hotels/rooms/${singleRoomState._id}`, 
+            Axios.put(`${renderURL}/api/hotels/${booking.hotelId}/rooms/${singleRoomState._id}`, 
                 {unavailableDates: newUnavailableDatesArray});      
     }
 

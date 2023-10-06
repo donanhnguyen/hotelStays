@@ -43,15 +43,12 @@ function Search () {
     }
 
     useEffect(() => {
-        if (!hotelsState) {
-            Axios.get(`${renderURL}/api/hotels/`)
-                .then((response) => {
-                    setAllHotelsState(response.data)
-                })    
-        } else {
-            setAllHotelsState(hotelsState);
-        }
-        
+ 
+        Axios.get(`${renderURL}/api/hotels/`)
+            .then((response) => {
+                setAllHotelsState(response.data)
+            })    
+    
     }, [])
 
     useEffect(() => {
@@ -71,46 +68,63 @@ function Search () {
         }
     }
 
-    function displayAllHotels () {
-        var hotelsArrayBeforeFilters = [];
-        // see if planet filter is chosen or not
-        if (chosenPlanetState && chosenPlanetState !== "No Filter" && allHotelsState) {
-            hotelsArrayBeforeFilters = allHotelsState.filter((hotel) => {
-                return chosenPlanetState === hotel.planet;
+    function filterHotels(hotels, planetFilter, sortFilter) {
+        let filteredHotels = hotels;
+      
+        if (planetFilter && planetFilter !== "No Filter") {
+          filteredHotels = filteredHotels.filter((hotel) => hotel.planet === planetFilter);
+        }
+      
+        if (sortFilter === "Price: Low to High") {
+          filteredHotels.sort((a, b) => {
+            const cheapestRoomForA = a.rooms.reduce((minRoom, currentRoom) => {
+                return currentRoom.price < minRoom.price ? currentRoom : minRoom;
+            }, a.rooms[0]);
+            const cheapestRoomForB = b.rooms.reduce((minRoom, currentRoom) => {
+                return currentRoom.price < minRoom.price ? currentRoom : minRoom;
+            }, b.rooms[0]);
+            return cheapestRoomForA.price - cheapestRoomForB.price;
+         
+          });
+        } else if (sortFilter === "Price: High to Low") {
+          
+            filteredHotels.sort((a, b) => {
+                const cheapestRoomForA = a.rooms.reduce((minRoom, currentRoom) => {
+                    return currentRoom.price < minRoom.price ? currentRoom : minRoom;
+                }, a.rooms[0]);
+                const cheapestRoomForB = b.rooms.reduce((minRoom, currentRoom) => {
+                    return currentRoom.price < minRoom.price ? currentRoom : minRoom;
+                }, b.rooms[0]);
+                return cheapestRoomForB.price - cheapestRoomForA.price;
             })
-        } else {
-            hotelsArrayBeforeFilters = allHotelsState;
+
         }
-        // see if sort filter is selected or not
-
-        var finalArray;
-
-        if (sortFilterState === "Price: Low to High") {
-            finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelA.lowestPrice - hotelB.lowestPrice)
-        } else if (sortFilterState === "Price: High to Low") {
-            finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelB.lowestPrice - hotelA.lowestPrice)
-        } else {
-            finalArray = hotelsArrayBeforeFilters;
+      
+        return filteredHotels;
+      }
+      
+      function displayFilteredHotels(filteredHotels, navigateToHotelShowPage) {
+        return filteredHotels.map((hotel, index) => (
+          <HotelListing
+            key={hotel.name + index}
+            hotel={hotel}
+            navigateToHotelShowPage={navigateToHotelShowPage}
+          />
+        ));
+      }
+      
+      function displayAllHotels() {
+        if (!allHotelsState) {
+          return null; // Handle the case when allHotelsState is not available
         }
-        
-        // display the hotel listings after all filters;
-        if (allHotelsState) {
-            var displayAllHotels = finalArray.map((hotel, index) => {
-                return (
-                    <HotelListing
-                        key={hotel.name + index}
-                        hotel={hotel}
-                        navigateToHotelShowPage={navigateToHotelShowPage}
-                        sortFilterState={sortFilterState}
-                    />
-                )
-            })  
-            return displayAllHotels;  
-        }
-
-    }
-
-    return (
+      
+        const filteredHotels = filterHotels(allHotelsState, chosenPlanetState, sortFilterState);
+        const displayedHotels = displayFilteredHotels(filteredHotels, navigateToHotelShowPage);
+      
+        return displayedHotels;
+      }
+      
+      return (
         <div className="App">
        
        <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>

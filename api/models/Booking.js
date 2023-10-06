@@ -7,6 +7,11 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    hotelId: {
+        type: Schema.Types.ObjectId,
+        ref: "Hotel",
+        required: true
+    },
     nameOfRoom: {
         type: String,
         required: true
