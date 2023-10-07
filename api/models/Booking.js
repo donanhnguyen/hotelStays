@@ -20,7 +20,7 @@ const BookingSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    planet: {
+    city: {
         type: String,
         required: true
     },
