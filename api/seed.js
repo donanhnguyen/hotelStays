@@ -1,8 +1,8 @@
 const seededHotels = [
     {
-        name: "Tatooine King's Hut",
-        planet: "Tatooine",
-        description: "A nice desert palace for kings.",
+        name: "Seattle Paramount",
+        city: "Seattle",
+        picUrl: "https://hi-cdn.t-rp.co.uk/images/hotels/1411198/0?width=870&height=480&crop=false",
         rooms: [{
             name: "Small Room",
             price: 50,
@@ -20,9 +20,9 @@ const seededHotels = [
         }],
     },
     {
-        name: "Tatooine Medium Hut",
-        planet: "Tatooine",
-        description: "A quiet modest desert hut.",
+        name: "Crowne Plaza Seattle",
+        city: "Seattle",
+        picUrl: "https://images.trvl-media.com/lodging/1000000/20000/18600/18518/8e156962.jpg?impolicy=resizecrop&rw=500&ra=fit",
         rooms: [
             {
               name: "Small Room",
@@ -42,21 +42,21 @@ const seededHotels = [
           ],
     },
     {
-        name: "Owen Lars Farm House",
-        planet: "Tatooine",
-        description: "Owen Lars' farm house. This is where Luke Skywalker was raised.",
+        name: "Pan Pacific Seattle",
+        city: "Seattle",
+        picUrl: "https://img1.10bestmedia.com/Images/Photos/336269/Denny-Suite_55_660x440.jpg",
         rooms: [
             {
-              name: "The whole farm house",
+              name: "Loft",
               price: 120,
               unavailableDates: [],
             },
           ],
     },
     {
-        name: "Hoth Major Base Hotel",
-        planet: "Hoth",
-        description: "A comfortable, warm, inviting base with outstanding service.",
+        name: "Hotel Zaza Austin",
+        city: "Austin",
+        picUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/02/3b/b4/hotel-zaza-austin.jpg?w=1200&h=-1&s=1",
         rooms: [
             {
               name: "Small Room",
@@ -81,9 +81,9 @@ const seededHotels = [
           ],
     },
     {
-        name: "Aurek Base",
-        planet: "Hoth",
-        description: "A former war base turned snowy getaway.",
+        name: "Hotel Marriott Austin",
+        city: "Austin",
+        picUrl: "https://media.bizj.us/view/img/11966692/pooltwilight-copysmall*1200xx2000-2000-500-0.jpg",
         rooms: [
             {
               name: "Small Room",
@@ -98,21 +98,21 @@ const seededHotels = [
           ],
     },
     {
-        name: "Hoth Mini Hut",
-        planet: "Hoth",
-        description: "A modest snowy hut made for the budget-friendly.",
+        name: "Hotel Irvine",
+        city: "Irvine",
+        picUrl: "https://www.fivestaralliance.com/files/fivestaralliance.com/field/image/nodes/2017/45870/0_exterior-G.jpg",
         rooms: [
             {
-              name: "Entire Hut",
-              price: 60,
+              name: "Suite",
+              price: 220,
               unavailableDates: [],
             },
           ],
     },
     {
-        name: "Hoth Ball Hotel",
-        planet: "Hoth",
-        description: "A modest snowy hotel made for the budget-friendly.",
+        name: "Marriott Irvine",
+        city: "Irvine",
+        picUrl: "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/https://www.cfmedia.vfmleonardo.com/imageRepo/7/0/139/416/49/snamc-exterior-9376-hor-clsc_O/Marriott-Irvine-Spectrum-Exterior.jpg?tr=w-780%2Ch-437%2Cfo-auto",
         rooms: [{
             name: "Small Room",
             price: 45,
@@ -125,9 +125,9 @@ const seededHotels = [
         },]
     },
     {
-        name: "Nar Shaddaa Stronghold",
-        planet: "Nar Shaddaa",
-        description: "The most poular hotel in Nar Shaddaa.",
+        name: "Sutton Place",
+        city: "Vancouver",
+        picUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/65/96/bf/the-sutton-place-hotel.jpg?w=1200&h=-1&s=1",
         rooms: [
             {
                 name: "Small Room",
@@ -152,9 +152,9 @@ const seededHotels = [
         ]
     },
     {
-        name: "Nar Shaddaa Sky Condo",
-        planet: "Nar Shaddaa",
-        description: "Known for it's view and exciting central location.",
+        name: "Hotel Vancouver",
+        city: "Vancouver",
+        picUrl: "https://dynl.mktgcdn.com/p/-jPP_eS2mNqEdBn_6RcWQW5OGGcY54FXH1CbhCiNhD0/1024x768.jpg",
         rooms: [
             {
                 name: "Entire condo",
@@ -164,9 +164,9 @@ const seededHotels = [
         ]
     },
     {
-        name: "Coruscant Stronghold",
-        planet: "Coruscant",
-        description: "The most popular hotel in the galaxy, central location, in the middle of Coruscant's busting nightlife.",
+        name: "Luxury Beach Hotel Miami",
+        city: "Miami",
+        picUrl: "https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2021/11/08/50ddd28aa56740c89a4b4b09ad5acaa1_Hero_1Hotel.jpg",
         rooms: [
             {
                 name: "Small Room",
@@ -191,9 +191,9 @@ const seededHotels = [
         ]
     },
     {
-        name: "Alderaan Stronghold",
-        planet: "Alderaan",
-        description: "A supreme hotel in the mountains of Alderaan.",
+        name: "Omni Dallas",
+        city: "Dallas",
+        picUrl: "https://www.omnihotels.com/-/media/images/hotels/daldtn/pool/daldtn-omni-dallas-pool-dusk.jpg?w=11700",
         rooms: [
             {
                 name: "Small Room",
@@ -218,9 +218,9 @@ const seededHotels = [
         ],
     },
     {
-        name: "House Alde",
-        planet: "Alderaan",
-        description: "Hotel of House Alde, where there is oustanding service.",
+        name: "Venetian Vegas",
+        city: "Las Vegas",
+        picUrl: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/283163011.jpg?k=e9cebad3117f66b1fd1c000d709fa000af255b178dcb0e25fe510fe2c546da02&o=&hp=1",
         rooms: [
             {
                 name: "Small Room",
@@ -235,88 +235,88 @@ const seededHotels = [
         ],
     },
     {
-        name: "Alderaan Royal Palace",
-        planet: "Alderaan",
-        description: "A super prestine, elegant, yet expensive hotel in the middle of Alderaan.",
+        name: "Bellagio",
+        city: "Las Vegas",
+        picUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/8a/e0/b9/bellagio-las-vegas.jpg?w=1200&h=-1&s=1",
         rooms: [
             {
-                name: "Royal Basic Room",
+                name: "Basic Room",
                 price: 100,
                 unvailableDates: [],
             },
             {
-                name: "Royal Advanced Room",
+                name: "Suite",
                 price: 150,
                 unvailableDates: [],
             },
             {
-                name: "Room of the Royal King",
+                name: "Palace Room",
                 price: 200,
                 unvailableDates: [],
             },
         ],
     },
     {
-        name: "Endor Treehouse Village",
-        planet: "Endor",
-        description: "Stay with Ewoks who will serve you.",
+        name: "New Yorker",
+        city: "New York",
+        picUrl: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/83778539.jpg?k=6c3a6f5219ea4d2f89eca9a39bd501dbb4115146a45e200b5d927ceee0bd5e5d&o=&hp=1",
         rooms: [
             {
-                name: "Treehouse 1",
+                name: "Small Room",
                 price: 30,
                 unvailableDates: [],
             },
             {
-                name: "Treehouse 2",
-                price: 30,
+                name: "Queen Size Room",
+                price: 40,
                 unvailableDates: [],
             },
             {
-                name: "Treehouse 3",
-                price: 30,
+                name: "King Size Room",
+                price: 50,
                 unvailableDates: [],
             },
         ],
     },
     {
-        name: "Endor Imperial Base",
-        planet: "Endor",
-        description: "Once a base for the Empire, it is now a hotel in the Endor forest.",
+        name: "The Peninsula",
+        city: "New York",
+        picUrl: "https://www.peninsula.com/en/-/media/images/new-york/compressed/photos/pny_exterior_bellman.jpg?mw=905&hash=1C08838698D0B4562BAD3BA141B807DB",
         rooms: [
             {
-                name: "Imperial room 1",
+                name: "Room 1",
                 price: 30,
                 unvailableDates: [],
             },
             {
-                name: "Imperial room 2",
+                name: "Room 2",
                 price: 35,
                 unvailableDates: [],
             },
             {
-                name: "Imperial room 3",
+                name: "Room 3",
                 price: 40,
                 unvailableDates: [],
             },
         ],
     },
     {
-        name: "Manaan Stronghold",
-        planet: "Manaan",
-        description: "A beautiful ocean stay with an even more amazing view of the deep blue waters of Manaan.",
+        name: "Boston Park Plaza",
+        city: "Boston",
+        picUrl: "https://www.bostonparkplaza.com/wp-content/uploads/2020/12/BPP_Hotel_Press-2_0.jpg",
         rooms: [
             {
-                name: "Basic Ocean room",
+                name: "Basic Room",
                 price: 100,
                 unavailableDates: [],
             },
             {
-                name: "Advanced Ocean room",
+                name: "Advanced Room",
                 price: 125,
                 unavailableDates: [],
             },
             {
-                name: "Supreme Ocean loft",
+                name: "Supreme Loft",
                 price: 250,
                 unavailableDates: [],
             }
@@ -324,21 +324,21 @@ const seededHotels = [
         
     },
     {
-        name: "Manaan Ocean House",
-        planet: "Manaan",
-        description: "A private ocean getaway.",
+        name: "Yotel Boston",
+        city: "Boston",
+        picUrl: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/308960206.jpg?k=8c7bdf24c7aca125d3a2cc210ab467b6c6ef700ddd11e4608d3f13b38882ffd1&o=&hp=1",
         rooms: [
             {
-                name: "Entire Ocean-front house",
+                name: "Party Room",
                 price: 350,
                 unavailableDates: [],
             }
         ]
     },
     {
-        name: "Varykino Villa",
-        planet: "Naboo",
-        description: "An absolutely beautiful villa originally for wealthy politicians, but now a heavenly getaway for all visitors.",
+        name: "Hotel Ivy",
+        city: "Minneapolis",
+        picUrl: "https://media.cntraveler.com/photos/53db0462dcd5888e145dd731/16:9/w_2560%2Cc_limit/hotel-ivy-minneapolis-minnesota-104165-1.jpg",
         rooms: [
             {
                 name: "Entire Villa",
@@ -348,35 +348,35 @@ const seededHotels = [
         ]
     },
     {
-        name: "Wookie Village",
-        planet: "Kashyyyk",
-        description: "Home to the brave wookies, this is a modest, relaxing, and affordable stay where the wookies will protect you.",
+        name: "Hewing Hotel",
+        city: "Minneapolis",
+        picUrl: "https://media.cntraveler.com/photos/61eae725c101d1d3fd6ac206/16:9/w_2560,c_limit/Pool-HewingHotel-MinneapolisMN-CRHotel.jpg",
         rooms: [
             {
-                name: "Small Hut",
+                name: "Small Room",
                 price: 25,
                 unavailableDates: [],
             },
             {
-                name: "Medium Hut",
+                name: "Medium Room",
                 price: 30,
                 unavailableDates: [],
             },
             {
-                name: "Large Hut",
+                name: "Large Room",
                 price: 35,
                 unavailableDates: [],
             }
         ]
     },
     {
-        name: "Coruscant Skyrise Apartment",
-        planet: "Coruscant",
-        description: "A comforting, budget-friendly apartment with a skyrise view.",
+        name: "Hotel Nelligan",
+        city: "Montreal",
+        picUrl: "https://media.cntraveler.com/photos/53da88f96dec627b149f0e67/16:9/w_2560,c_limit/hotel-nelligan-montreal-montreal-quebec-101658-1.jpg",
         rooms: [
             {
-                name: "Entire Apartment",
-                price: 90,
+                name: "Entire Studio",
+                price: 190,
                 unavailableDates: [],
             }
         ]

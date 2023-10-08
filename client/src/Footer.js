@@ -7,7 +7,7 @@ function Footer () {
 
     return (
         <div className="footer">
-            <p>Copyright GalaxyStays {year}</p>
+            <p>Copyright HotelStays {year}</p>
         </div>
     )
 }

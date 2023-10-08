@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Room from "./Room.js";
+import Review from "./Review.js";
 
 const HotelSchema = new mongoose.Schema({
     name: {
@@ -15,7 +16,8 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    rooms: [Room.schema] // Use Room.schema to reference the schema
+    rooms: [Room.schema],
+    reviews: [Review.schema]
 });
 
 // Add a method to calculate the average rating for the hotel

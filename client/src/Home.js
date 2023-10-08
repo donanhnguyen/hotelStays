@@ -1,12 +1,10 @@
 import {useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
-import './ImageCarousel.scss';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './cardflip.css';
 import Footer from './Footer';
-import HotelPicSlider from './HotelPicSlider';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -14,7 +12,7 @@ function getRandomInt(max) {
 
 function Home () {
 
-    const {setChosenPlanetState, 
+    const {setChosencityState, 
         hotelsState, 
         setHotelsState,
         renderURL
@@ -22,11 +20,11 @@ function Home () {
     
     const navigate = useNavigate();
 
-    var allPlanets = [];
+    var allcitys = [];
     if (hotelsState) {
         for (let i in hotelsState) {
-            if (!allPlanets.includes(hotelsState[i].planet)) {
-                allPlanets.push(hotelsState[i].planet);
+            if (!allcitys.includes(hotelsState[i].city)) {
+                allcitys.push(hotelsState[i].city);
             }
         }
     }
@@ -38,32 +36,32 @@ function Home () {
             })
     }, [])
 
-    function navigateToPlanetSearchResults (e) {
-        setChosenPlanetState(e.target.alt);
+    function navigateTocitySearchResults (e) {
+        setChosencityState(e.target.alt);
         navigate('/search');
     }
 
-    function displayPlanets () {
-        const displayedPlanets = allPlanets.map((planet) => {
-            var countHowManyHotelsInPlanet = 0;
+    function displaycitys () {
+        const displayedcitys = allcitys.map((city) => {
+            var countHowManyHotelsIncity = 0;
             for (let i in hotelsState) {
                 let currentHotel = hotelsState[i];
-                if (planet === currentHotel.planet) {
-                    countHowManyHotelsInPlanet += 1;
+                if (city === currentHotel.city) {
+                    countHowManyHotelsIncity += 1;
                 }
             }
             return (
-                <div onClick={(e) => navigateToPlanetSearchResults(e)} key={planet} className="single-planet-container">
-                    <h1>{planet}</h1>
-                    <img src={require(`../pics/${planet.split(' ').join('')}.jpg`)} 
-                        alt={planet} 
-                        className="single-planet-image"
+                <div onClick={(e) => navigateTocitySearchResults(e)} key={city} className="single-city-container">
+                    <h1>{city}</h1>
+                    <img src={require(`../pics/${city.split(' ').join('')}.jpg`)} 
+                        alt={city} 
+                        className="single-city-image"
                     />
-                    <p>{countHowManyHotelsInPlanet} hotels</p>
+                    <p>{countHowManyHotelsIncity} hotels</p>
                 </div>
             )
         })
-        return displayedPlanets;
+        return displayedcitys;
     }
 
     function displayFeaturedHotels () {
@@ -85,18 +83,9 @@ function Home () {
                         className='flip-card single-featured-hotel'
                         onClick={() => navigate(`/hotel/${hotel._id}`, {state: {hotel: hotel}}) }
                     >
-                    <div className="flip-card-inner">
-
-                        <div className="flip-card-front">
                             <p>{hotel.name}</p>
-                            <img className="hotel-pic-in-featured-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
-                        </div>
-                       
-                        <div className="flip-card-back">
-                            <p>{hotel.description}</p>
-                            <p>Located on planet {hotel.planet}.</p>
-                        </div>
-                    </div>
+                            <img className="hotel-pic-in-featured-page" src={hotel.picUrl}></img>
+           
                     </div>
                 )
             })
@@ -108,12 +97,11 @@ function Home () {
         <div>
             <div className="home-container">
                 
-                <HotelPicSlider hotelsState={hotelsState}/>
 
                 <br></br>
 
                 <div className='featured-hotels-container'>
-                    <h1 className='featured-hotels-heading'>Featured hotels:</h1>
+                    <h1 className='featured-hotels-heading'>Featured Hotels:</h1>
                     <div className='featured-hotels'>
                         {displayFeaturedHotels()}
                     </div>
@@ -122,10 +110,10 @@ function Home () {
 
                 <br></br>
 
-                {/* display all hotel planets here */}
-                <h1>Browse by planets:</h1>
-                <div className='displayed-planets-container'>
-                    {displayPlanets()}
+                {/* display all hotel citys here */}
+                <h1>Browse by cities:</h1>
+                <div className='displayed-citys-container'>
+                    {displaycitys()}
                 </div>
            
                 

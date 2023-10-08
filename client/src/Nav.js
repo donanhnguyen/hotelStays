@@ -70,7 +70,7 @@ function Nav (props) {
        
           <nav className='nav-bar'>   
           <h1 className='galaxyStays'>
-              GalaxyStays.com
+              HotelStays.com <i class="fa fa-hotel"></i>
           </h1>
             {
               currentUserState ?

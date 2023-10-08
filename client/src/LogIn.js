@@ -89,13 +89,12 @@ function LogIn(props) {
                 <div className="user-box">
                 <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
                 </div>
-                <button type='submit'>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Log In
+                <button
+                    type="submit"
+                    >
+                    Log In
                 </button>
+
             </form>
         </div>
             
