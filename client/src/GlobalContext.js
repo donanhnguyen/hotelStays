@@ -18,7 +18,7 @@ export function GlobalProvider( {children} ) {
     const [currentUserState, setCurrentUserState] = useState(null);
     const [dateRange, setDateRange] = useState([null, null]);
     const [dateRangeArray, setDateRangeArray] = useState();
-    const [chosenPlanetState, setChosenPlanetState] = useState(null);
+    const [chosenCityState, setChosenCityState] = useState(null);
     const [hotelsState, setHotelsState] = useState();
 
     var renderURL = "";
@@ -37,8 +37,8 @@ export function GlobalProvider( {children} ) {
             dateRangeArray,
             setDateRangeArray,
             isRoomAvailableOrNot,
-            chosenPlanetState, 
-            setChosenPlanetState,
+            chosenCityState, 
+            setChosenCityState,
             hotelsState,
             setHotelsState,
             renderURL,

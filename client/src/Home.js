@@ -12,7 +12,7 @@ function getRandomInt(max) {
 
 function Home () {
 
-    const {setChosencityState, 
+    const {setChosenCityState, 
         hotelsState, 
         setHotelsState,
         renderURL
@@ -37,7 +37,7 @@ function Home () {
     }, [])
 
     function navigateTocitySearchResults (e) {
-        setChosencityState(e.target.alt);
+        setChosenCityState(e.target.alt);
         navigate('/search');
     }
 
@@ -104,6 +104,13 @@ function Home () {
                     <h1 className='featured-hotels-heading'>Featured Hotels:</h1>
                     <div className='featured-hotels'>
                         {displayFeaturedHotels()}
+                    </div>
+                </div>
+
+                <div className='featured-hotels-container'>
+                    <h1 className='featured-hotels-heading'>Top Rated Hotels:</h1>
+                    <div className='featured-hotels'>
+                        
                     </div>
                 </div>
 

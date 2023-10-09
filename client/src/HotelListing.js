@@ -40,14 +40,14 @@ function HotelListing (props) {
 
             {/* 33.3% */}
             <div className="image-part">
-                <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
+                <img className="hotel-pic-in-search-page" src={hotel.picUrl}></img>
             </div>
             
             
             {/* 66.6% */}
             <div className="hotel-listing-info">
                 <h2 className="hotel-name-in-listing">{hotel.name}</h2>
-                <h1>Planet: {hotel.planet}</h1>
+                <h1>City: {hotel.city}</h1>
                 
                 <h1>
                     Rooms starting at 

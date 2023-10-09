@@ -10,6 +10,7 @@ body {
 .App {
   text-align: center;
   font-family: "Roboto";
+  background-color: white;
 }
 
 .App-logo {
@@ -31,7 +32,7 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.139);
+  background-color: white;
   width: 99%;
 }
 
@@ -57,7 +58,8 @@ label {
   background-color: rgb(0, 0, 0);
 }
 a {
-  color: white;
+  color: rgb(28, 53, 166);
+
 }
 a:link {
   text-decoration: none;
@@ -68,12 +70,14 @@ a:visited {
 }
 a:hover {
   text-decoration: none;
-  color:rgb(247, 255, 7)
+  color:rgb(7, 114, 255)
 }
-
+#bed-icon {
+  color: rgb(222, 141, 0);
+}
 /*  */
 .main-header {
-  font-family: 'Allerta Stencil';
+  font-family: 'Roboto';
   color: rgb(0, 0, 0);
   /* animation: wheelHueColor 10s infinite; */
   text-align: center;
@@ -111,7 +115,7 @@ a:hover {
   width: 60%;
 }
 .featured-hotels-heading {
-  font-size: 3.7rem;
+  font-size: 2.0rem;
   font-weight: bold;
 }
 @media screen and (max-width: 1230px) {
@@ -135,7 +139,8 @@ a:hover {
 .featured-hotels-container {
   border: 0.5px solid rgba(255, 255, 255, 0.158);
   border-radius: 5px;
-  padding: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: rgb(255, 255, 255);
   width: 100%;
 }
@@ -199,6 +204,12 @@ a:hover {
 }
 
 /* search page */
+.search-container {
+  display: grid;
+  grid-template-columns: 33% 66%;
+  width: 80%;
+  margin: auto;
+}
 
 .search-hotels-container {
   width: 80%;
@@ -210,9 +221,10 @@ a:hover {
 .single-hotel-listing-container {
   display: grid;
   grid-template-columns: 33.3% auto;
+  border: 1px solid rgba(123, 123, 123, 0.454);
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  color: rgb(248, 251, 255);
+  color: rgb(0, 85, 255);
   margin: auto;
   margin-top: 18px;
   margin-bottom: 18px;
@@ -224,27 +236,25 @@ a:hover {
 }
 .hotel-listing-info {
   text-align: center;
-  padding: 6% 0;
+  padding: 10px 0;
 }
 .hotel-name-in-listing {
-  font-size: 32px;
+  font-size: 1.4em;
   font-weight: bold;
   padding: 10px;
-  color: yellow;
+  color: rgb(0, 44, 110);
 }
 .hotel-listing-info h1 {
-  font-size: 28px;
+  font-size: 1.4em;
 }
 
 .single-hotel-listing-container:hover {
-  background-color: rgba(4, 0, 44, 0.568);
   /* cursor: pointer; */
 }
 .hotel-pic-in-search-page {
   width: 100%;
-  height: 100%;
+  height: 309px;
   border-radius: 10px;
-  box-shadow: 2px 1px 2px 1px rgba(255, 255, 0, 0.643);
 }
 
 @media screen and (max-width: 1200px) {
@@ -293,24 +303,27 @@ a:hover {
 /*  */
 /* search bar */
 .search-bar-container {
-  display: flex;
-  justify-content: center;
-  background: linear-gradient(black, rgba(0, 0, 25, 0.67));
+  margin-top: 50px;
+  display: block;
+  background-color: rgb(240, 199, 34);
   flex-wrap: wrap;
   width: 100%;
-  min-height: 60px;
+  height: 600px;
   font-size: 1.6em;
+  padding: 30% 0;
 }
-.search-bar-container > div, select {
-  margin-right: 10px;
-  margin-left: 10px;
-  min-height: 100%;
+.search-bar-container div {
+  
 }
 .search-bar-button {
-  min-height: 100%;
 }
 .search-bar-container select {
-  height: auto;
+  height: 50px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 250px;
 }
 .date-picker {
   background-color: white;
@@ -324,10 +337,11 @@ a:hover {
 
 .nav-bar {
   min-height: 30px;
+  color: rgb(28, 53, 166);
   /* background-color: rgb(0, 34, 64); */
   /* animation: wheelBackgroundColor 12s infinite; */
-  background-color: #013A6B;
-  background-image: -webkit-linear-gradient(30deg, #009ff5 50%, #00191ba0 50%);
+  background-color: #ffffff;
+  /* background-image: -webkit-linear-gradient(30deg, #009ff5 50%, #00191ba0 50%); */
 }
 .highlighted {
   border-bottom: 2px solid white;
@@ -352,12 +366,15 @@ a:hover {
   padding: 0px;
 }
 .nav-bar ul li {
+  color: rgb(28, 53, 166);
+
   font-size: 2rem;
   margin: 10px;
   padding: 20px;
 }
 .galaxyStays {
-  color: white;
+  color: rgb(28, 53, 166);
+
   float: left;
   padding: 20px;
 }
@@ -366,7 +383,8 @@ a:hover {
   float: right;
   padding: 30px;
   font-size: 1.5em;
-  color: white;
+  color: rgb(28, 53, 166);
+
 }
 @media screen and (max-width: 1270px) {
   .galaxyStays {
@@ -445,7 +463,7 @@ a:hover {
   margin: 5px;
 }
 .price {
-  color: rgb(0, 255, 0);
+  color: rgb(4, 26, 0);
   font-weight: bold;
 }
 .single-room-displayed h1 {

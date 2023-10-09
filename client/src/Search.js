@@ -1,4 +1,4 @@
-import { useLocation, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useState, useEffect, useContext, useRef } from "react";
 import Axios from 'axios';
 import SearchBar from "./SearchBar";
@@ -9,15 +9,14 @@ import GlobalContext from './GlobalContext';
 
 function Search () {
 
-    const location = useLocation();
     const navigate = useNavigate();
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [sortFilterState, setSortFilterState] = useState(null);
-    const {chosenPlanetState, 
-        setChosenPlanetState,
+    const {chosenCityState, 
+        setChosenCityState,
         dateRangeArray,
         dateRange,
         renderURL,
@@ -26,18 +25,18 @@ function Search () {
 
     const searchResultsContainerRef = useRef(null);
 
-    var allPlanets = [];
+    var allcitys = [];
 
     if (hotelsState) {
         for (let i in hotelsState) {
-            if (!allPlanets.includes(hotelsState[i].planet)) {
-                allPlanets.push(hotelsState[i].planet);
+            if (!allcitys.includes(hotelsState[i].city)) {
+                allcitys.push(hotelsState[i].city);
             }
         }
     } else {
         for (let i in allHotelsState) {
-            if (!allPlanets.includes(allHotelsState[i].planet)) {
-                allPlanets.push(allHotelsState[i].planet);
+            if (!allcitys.includes(allHotelsState[i].city)) {
+                allcitys.push(allHotelsState[i].city);
             }
         }
     }
@@ -58,7 +57,7 @@ function Search () {
           setIsLoading(false);
           setSearchResultsReady(true);
         }, 1000)
-    }, [chosenPlanetState, dateRange])
+    }, [chosenCityState, dateRange])
 
     function navigateToHotelShowPage (hotel) {
         if (dateRangeArray) {
@@ -68,11 +67,11 @@ function Search () {
         }
     }
 
-    function filterHotels(hotels, planetFilter, sortFilter) {
+    function filterHotels(hotels, cityFilter, sortFilter) {
         let filteredHotels = hotels;
       
-        if (planetFilter && planetFilter !== "No Filter") {
-          filteredHotels = filteredHotels.filter((hotel) => hotel.planet === planetFilter);
+        if (cityFilter && cityFilter !== "No Filter") {
+          filteredHotels = filteredHotels.filter((hotel) => hotel.city === cityFilter);
         }
       
         if (sortFilter === "Price: Low to High") {
@@ -118,7 +117,7 @@ function Search () {
           return null; // Handle the case when allHotelsState is not available
         }
       
-        const filteredHotels = filterHotels(allHotelsState, chosenPlanetState, sortFilterState);
+        const filteredHotels = filterHotels(allHotelsState, chosenCityState, sortFilterState);
         const displayedHotels = displayFilteredHotels(filteredHotels, navigateToHotelShowPage);
       
         return displayedHotels;
@@ -134,43 +133,41 @@ function Search () {
             </div>
         </div>
 
-            {/* search bar here */}
-            <SearchBar 
-                allPlanets={allPlanets}
+        <div className="search-container">
+            {/* Search bar here */}
+            <SearchBar
+                allcitys={allcitys}
                 setSearchResultsReady={setSearchResultsReady}
                 searchResultsReady={searchResultsReady}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
-                chosenPlanetState={chosenPlanetState}
-                setChosenPlanetState={setChosenPlanetState}
+                chosenCityState={chosenCityState}
+                setChosenCityState={setChosenCityState}
                 setSortFilterState={setSortFilterState}
+                style={{ flex: '1' }} // Set to take up one-third of the width
             />
-    
 
-            {/* display all hotels */}
-            <div  className="search-hotels-container">
+            {/* Display all hotels */}
+            <div className="search-hotels-container">
+                {isLoading ? (
+                <Loader />
+                ) : (
+                <div></div>
+                )}
 
-                {isLoading ?
-                    <Loader/> 
-                    :
-                    <div></div>
-                }
+                {searchResultsReady ? (
+                <h1 style={{ color: 'black' }}>{searchResultsContainerRef.current.children.length} results:</h1>
+                ) : (
+                <div></div>
+                )}
 
-                { searchResultsReady ?
-                    <h1 style={{color: 'white'}}>{searchResultsContainerRef.current.children.length} results:</h1>
-                    :
-                    <div></div>
-                }
-
-                <div ref={searchResultsContainerRef} 
-                    className={`results-container`}
-                >
-                    {displayAllHotels()}
+                <div ref={searchResultsContainerRef} className={`results-container`}>
+                {displayAllHotels()}
                 </div>
-
             </div>
 
-
+        </div>
+            
       </div>
     )
 }

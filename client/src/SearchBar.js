@@ -8,11 +8,11 @@ function SearchBar (props) {
   const {dateRange, setDateRange, dateRangeArray, setDateRangeArray} = contextInfo;
   const [showErrorModal, setShowErrorModal] = useState(false);
 
-  const {allPlanets, 
+  const {allcitys, 
     setSearchResultsReady,
     setIsLoading,
-    chosenPlanetState,
-    setChosenPlanetState,
+    chosenCityState,
+    setChosenCityState,
     setSortFilterState
   } = props;
 
@@ -50,8 +50,8 @@ function SearchBar (props) {
     }
   }
 
-  function setPlanetFilter (e) {
-    setChosenPlanetState(e.target.value)
+  function setcityFilter (e) {
+    setChosenCityState(e.target.value)
   }
 
   function setSortFilter (e) {
@@ -84,10 +84,10 @@ function SearchBar (props) {
           />
         </div>
 
-        <select id='planet' onChange={(e) => {setPlanetFilter(e)}} value={chosenPlanetState}>
-          <option disabled selected value>Filter By Planet</option>
+        <select id='city' onChange={(e) => {setcityFilter(e)}} value={chosenCityState}>
+          <option disabled selected value>Filter By city</option>
           <option>No Filter</option>
-          {allPlanets.map((planet, i) => <option key={planet+i}value={planet}>{planet}</option>)}
+          {allcitys.map((city, i) => <option key={city+i}value={city}>{city}</option>)}
         </select>
 
         <select id='sort-filter' onChange={(e) => {setSortFilter(e)}}>

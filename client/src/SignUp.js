@@ -19,6 +19,7 @@ function SignUp (props) {
 
     const [formState, setFormState] = useState({
         username: "",
+        email: "",
         password: ""
     });
 
@@ -39,7 +40,9 @@ function SignUp (props) {
            if (formState.username === "" || formState.password === "") {
                 setErrorsState("Fields can't be blank!");
             } else if (formState.username.length < 3 || formState.password.length < 3) {
-                setErrorsState("Username & password must be at least 3 characters.");
+                setErrorsState("Username & password must be at least 5 characters.");
+            } else if (!formState.email.includes("@")) {
+                setErrorsState("Invalid email format. Please include '@'.");
             } else {
                  Axios.post(`${renderURL}/api/auth/register/`, formState)
                     .then((response) => {
@@ -57,17 +60,11 @@ function SignUp (props) {
          
     }
 
-    function setUsername(e) {
+    function setFormField (e, field) {
         setFormState((prevState) => {
-            return {...prevState, username: e.target.value}
+            return {...prevState, [`${field}`] : e.target.value}
         })
     }
-    function setPassword(e) {
-        setFormState((prevState) => {
-            return {...prevState, password: e.target.value}
-        })
-    }
-
 
   return (
     <div className="App">
@@ -90,24 +87,23 @@ function SignUp (props) {
             <form onSubmit={submitRegister}>
 
                 <div className="user-box">
-                    <input onChange={(e) => setUsername(e)} type="text" placeholder='username' required=""/>
+                    <input onChange={(e) => setFormField(e, 'username')} type="text" placeholder='username' required=""/>
                 </div>
 
                 <div className="user-box">
-                    <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
+                    <input onChange={(e) => setFormField(e, 'email')} type="text" placeholder='email' required=""/>
+                </div>
+
+                <div className="user-box">
+                    <input onChange={(e) => setFormField(e, 'password')} type="password" placeholder='password' required=""/>
                 </div>
 
                 <div className="user-box">
                     <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder='confirm password' required=""/>
                 </div>
 
-                <button type='submit'>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Register
-                </button>
+                <button type='submit'>Register</button>
+
             </form>
         </div>
 
