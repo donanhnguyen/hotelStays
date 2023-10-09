@@ -64,44 +64,48 @@ function SearchBar (props) {
   }
 
   return (
-    <div className="search-bar-container">
-
-        <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
+    <div>
+      
+      <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
             <div className={`modal-content`}>
                 <p style={{fontSize: '28px', color: 'red'}}>Date's can't be blank!</p>
                 <button className="btn btn-danger btn-lg" style={{margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
             </div>
         </div>
 
-        <div>
-          <DateRangePicker 
-            clearIcon={null} 
-            format='MM/dd/y'
-            className={'date-picker'} 
-            onChange={ (value) => {handleSetDateRange(value)} } 
-            value={dateRange} 
-            minDate={new Date()}
-          />
-        </div>
+      <div className="search-bar-container">
+          <div>
+            <DateRangePicker 
+              clearIcon={null} 
+              format='MM/dd/y'
+              className={'date-picker'} 
+              onChange={ (value) => {handleSetDateRange(value)} } 
+              value={dateRange} 
+              minDate={new Date()}
+            />
+          </div>
 
-        <select id='city' onChange={(e) => {setcityFilter(e)}} value={chosenCityState}>
-          <option disabled selected value>Filter By city</option>
-          <option>No Filter</option>
-          {allcitys.map((city, i) => <option key={city+i}value={city}>{city}</option>)}
-        </select>
+          <select id='city' onChange={(e) => {setcityFilter(e)}} value={chosenCityState}>
+            <option disabled selected value>Filter By city</option>
+            <option>No Filter</option>
+            {allcitys.map((city, i) => <option key={city+i}value={city}>{city}</option>)}
+          </select>
 
-        <select id='sort-filter' onChange={(e) => {setSortFilter(e)}}>
-          <option disabled selected value>Sort By:</option>
-          <option>None</option>
-          <option>Price: Low to High</option>
-          <option>Price: High to Low</option>
-        </select>
+          <select id='sort-filter' onChange={(e) => {setSortFilter(e)}}>
+            <option disabled selected value>Sort By:</option>
+            <option>None</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
 
-        <button onClick={applySearchFilters}
-          className='btn btn-primary'
-          >Search
-        </button>
+          <button onClick={applySearchFilters}
+            className='btn btn-primary'
+            >Search
+          </button>
+      </div>
+
     </div>
+    
 
   );
 

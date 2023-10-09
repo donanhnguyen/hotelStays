@@ -57,7 +57,7 @@ function Home () {
                         alt={city} 
                         className="single-city-image"
                     />
-                    <p>{countHowManyHotelsIncity} hotels</p>
+                    <p>{countHowManyHotelsIncity} {countHowManyHotelsIncity > 1 ? 'hotels' : 'hotel'}</p>
                 </div>
             )
         })

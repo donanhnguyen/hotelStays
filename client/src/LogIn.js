@@ -36,20 +36,16 @@ function LogIn(props) {
         if (formState.username === "" || formState.password === "") {
             setErrorsState("Invalid Login.")
         }
-        Axios.get(`${renderURL}/api/users/${formState.username}/`)
+        Axios.post(`${renderURL}/api/users/${formState.username}/`, {password: formState.password})
             .then((response) => {
-                if (response.data.password === formState.password) {
-                    contextInfo.setCurrentUserState(response.data);
-                    setSuccessfulLogIn(true);
-                    setTimeout(() => {
-                       navigate('/');  
-                    }, 1000)
-                } else {
-                    setErrorsState("Wrong Password");
-                }
+                contextInfo.setCurrentUserState(response.data);
+                setSuccessfulLogIn(true);
+                setTimeout(() => {
+                    navigate('/');  
+                }, 1000)
             })
             .catch((error) => {
-                setErrorsState("Invalid Login")
+                setErrorsState(error.response.data)
             }) 
     }
 
@@ -89,11 +85,7 @@ function LogIn(props) {
                 <div className="user-box">
                 <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
                 </div>
-                <button
-                    type="submit"
-                    >
-                    Log In
-                </button>
+                <button type="submit">Log In</button>
 
             </form>
         </div>

@@ -9,7 +9,7 @@ import Modal from './Modal';
 function Nav (props) {
 
   const contextInfo = useContext(GlobalContext);
-  const {currentUserState, setCurrentUserState, setChosenPlanetState, setDateRange, setDateRangeArray} = contextInfo;
+  const {currentUserState, setCurrentUserState, setChosenCityState, setDateRange, setDateRangeArray} = contextInfo;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,7 +17,7 @@ function Nav (props) {
       // set current user to null
       setCurrentUserState(null);
       // set the search filters back to null
-      setChosenPlanetState(null);
+      setChosenCityState(null);
       setDateRange([null, null]);
       setDateRangeArray(null);
       // navigate back to home
