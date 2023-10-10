@@ -1,6 +1,5 @@
-import {useState, useEffect, useContext} from 'react';
+import {useContext} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 
 function HotelShowPage () {
@@ -39,14 +38,22 @@ function HotelShowPage () {
         const displayedRooms = hotel.rooms.map((room, i) => {
             return (
                 <div className='single-room-displayed' key={room + i}>
-                    <h1>{room.name}</h1>
-                    <h1 className='price'>${room.price}</h1>
 
-                    {/* show if the room is avail here or not, based on unavailableDates array */}
+                    <div>
+                        <img src={'https://img.freepik.com/free-photo/luxury-classic-modern-bedroom-suite-hotel_105762-1787.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1696809600&semt=ais'} alt={room.name} />
+                    </div>
 
-                    {displayBookButtonAndIfItsAvailableOrNot(room)}
+                    <div id="room-info" className="room-info-container">
+                        <div className="price-container">
+                            <h1 className='price'>${room.price}</h1>
+                        </div>
+                        <h1>{room.name}</h1>
+                        <p>{(Math.floor(Math.random() * 5) + 1)} rooms left</p>
+                        {/* Show if the room is available here or not, based on unavailableDates array */}
+                        {displayBookButtonAndIfItsAvailableOrNot(room)}
+                    </div>
 
-                    
+                
                 </div>
             )
         })
@@ -61,8 +68,10 @@ function HotelShowPage () {
         <div className='App'>
             <div className='hotel-show-container'>
                 
-                <button onClick={backtoresults}
-                className='btn btn-danger btn-lg back-to-search-results-button'>Back to search results</button>
+            <button onClick={backtoresults} className='btn btn-danger btn-lg back-to-search-results-button'>
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+
+            </button>
 
                 {
                     dateRangeArray ?

@@ -1,5 +1,5 @@
 import {useEffect, useContext, useReducer} from 'react';
-import { useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
@@ -24,14 +24,18 @@ function myBookingsReducer(state, action) {
 function MyBookings () {
 
   const [myBookingsState, myBookingsDispatch] = useReducer(myBookingsReducer, initialState);
-
+  const navigate = useNavigate();
   const {currentUserState, renderURL} = useContext(GlobalContext);
 
   useEffect(() => {
-    Axios.get(`${renderURL}/api/users/${currentUserState._id}/bookings/`)
+    if (!currentUserState) {
+      navigate("/login");
+    } else {
+      Axios.get(`${renderURL}/api/users/${currentUserState._id}/bookings/`)
         .then((response) => {
             myBookingsDispatch({type: 'getAllBookings', payload: response.data});
         })
+    }
   }, [])
 
   function displayUpcomingBookings () {

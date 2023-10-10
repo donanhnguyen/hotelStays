@@ -4,14 +4,13 @@ import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import Loader from './Loader';
 import './FancyButtons.css';
+import PaymentForm from './PaymentForm';
 
 function ConfirmBookingPage () {
     const location = useLocation();
-    const navigate = useNavigate();
     const contextInfo = useContext(GlobalContext);
     const {currentUserState, 
         dateRangeArray,
-        localHost,
         renderURL
     } = contextInfo;
     const {room, hotel} = location.state;
@@ -25,13 +24,15 @@ function ConfirmBookingPage () {
         hotelId: hotel._id,
         nameOfRoom: room.name,
         totalPrice: dateRangeArray.length * room.price,
-        planet: hotel.planet,
+        city: hotel.city,
         dates: dateRangeArray,
         userId: currentUserState._id,
         roomId: room._id
     }
 
-    function confirmBooking () {
+    function confirmBooking (e) {
+        e.preventDefault();
+        
         setIsLoading(true);
 
         Axios.post(`${renderURL}/api/users/${currentUserState._id}/bookings/`, bookingDetailsObject)
@@ -65,24 +66,25 @@ function ConfirmBookingPage () {
     } else {
         return (
             <div className='confirmation-container'>
+                    <h1>Confirming booking for: {hotel.name}</h1>
+                    <h1>Duration: {dateRangeArray[0]} - {dateRangeArray[dateRangeArray.length-1]}</h1>
 
-                <h1>Confirming booking for: {hotel.name}</h1>
-                <h1>Duration: {dateRangeArray[0]} - {dateRangeArray[dateRangeArray.length-1]}</h1>
+                    <img className="hotel-pic-in-confirm-page" 
+                        src={hotel.picUrl}>  
+                    </img>
 
-                <img className="hotel-pic-in-confirm-page" 
-                    src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}>  
-                </img>
+                    <div className='bottom-part-confirmation'>
 
+                        <PaymentForm/>
 
-                <p>Total price for {dateRangeArray.length} days: ${dateRangeArray.length * room.price}</p>
-                
-                <button onClick={confirmBooking} className='confirm-booking-button'>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Confirm Booking
-                </button>
+                        <div>
+                            <p>Total price for {dateRangeArray.length} days: ${dateRangeArray.length * room.price}</p>
+                            
+                            <button onClick={(e) => confirmBooking(e)} className='btn btn-danger btn-lg'>Confirm Booking</button>
+                        </div>
+
+                    </div>
+
 
             </div>
         )  

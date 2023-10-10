@@ -362,6 +362,7 @@ a:hover {
 .error-messages {
   color: red;
   font-size: 1.5rem;
+  font-weight: 1000;
 }
 /* nav bar */
 
@@ -440,29 +441,24 @@ a:hover {
 }
 /* hotel show page */
 .hotel-show-container {
-  color: rgb(27, 111, 255);
+  color: rgb(0, 68, 158);
   width: 80%;
   margin: auto;
   border-left: 1px solid rgba(114, 114, 114, 0.527);
   border-right: 1px solid rgba(114, 114, 114, 0.527);
   background-color: #ffffff;
 }
-.hotel-description-in-show-page {
-  font-size: 2em;
-  margin: auto;
-  margin-bottom: 10px;
-  color: rgb(239, 239, 38);
-}
+
 .hotel-pic-in-show-page {
-  width: 90%;
+  width: 65%;
   height: 500px;
-  border-radius: 30px;
+  border-radius: 9px;
 }
 
 @media screen and (max-width: 1200px) {
   .hotel-pic-in-show-page {
     width: 90%;
-    height: 490px;
+    height: 450px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -479,47 +475,100 @@ a:hover {
 }
 .displayed-rooms-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
 }
 .single-room-displayed {
   background-color: rgba(255, 255, 255, 0.908);
-  color: rgb(36, 102, 255);
-  border: 1px solid rgba(154, 154, 154, 0.773);
+  color: rgb(0, 40, 97);
+  border: 1px solid rgba(154, 154, 154, 0.222);
   border-radius: 20px;
-  height: 220px;
-  width: 220px;
-  margin: 5px;
+  width: 65%;
+  height: 280px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 42% auto;
 }
+.single-room-displayed div img {
+  height: 280px;
+  width: 100%;
+  border-top-left-radius: 20px; /* Adjust the radius as needed */
+  border-bottom-left-radius: 20px; /* Adjust the radius as needed */
+}
+
+.room-info-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+}
+
+.price-container {
+  position: relative;
+  align-self: flex-end;
+  margin-bottom: 8px;
+  background-color: rgb(255, 234, 0);
+  border-top-right-radius: 20px;
+  padding: 3%;
+}
+
 .price {
-  color: rgb(31, 205, 0);
+  color: rgb(3, 84, 247);
   font-weight: bold;
 }
 .single-room-displayed h1 {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 .single-room-displayed p {
   color: red;
   font-size: 1.2rem;
 }
+@media screen and (max-width: 1200px) {
+  .single-room-displayed {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .single-room-displayed {
+    height: 210px;
+  }
+  .single-room-displayed h1 {
+    font-size: 1.2em;
+  }
+  .single-room-displayed div img {
+    height: 210px;
+  }
+}
 /* confirmation booking page */
 .confirmation-container {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.783);
+  color: black;
+  background-color: white;
   width: 92%;
   margin: auto;
 }
+.confirmation-container h1 {
+  font-size: 2em;
+}
 .confirmation-container p {
-  font-size: 30px;
-  background-color: #008814e9;
-  color: rgb(255, 255, 255);
+  font-size: 1.5em;
+  color: rgb(0, 0, 0);
   margin: 10px;
 }
 .hotel-pic-in-confirm-page {
-  width: 72%;
-  height: 600px;
+  width: 62%;
+  height: 500px;
   border-radius: 10px;
+}
+@media screen and (max-width: 1150px) {
+  .hotel-pic-in-confirm-page {
+    width: 92%;
+    height: 460px;
+  }
 }
 /* isconfirmed */
 .isConfirmed-container {
@@ -617,4 +666,11 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.647);
   color: rgb(0, 0, 0)
 }
+.google-login {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+}

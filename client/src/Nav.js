@@ -74,7 +74,7 @@ function Nav (props) {
           </h1>
             {
               currentUserState ?
-              <p className='loggedin'>Welcome, {currentUserState.username}</p>
+              <p className='loggedin'><i class="fa fa-user-circle" aria-hidden="true"> {currentUserState.username}</i></p>
               :
               <p className='loggedin'>Not Logged In</p>
             }

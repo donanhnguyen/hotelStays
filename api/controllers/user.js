@@ -24,4 +24,21 @@ export const logInUser = async (req, res) => {
     }
 };
 
+export const logInWithGoogle = async (req, res) => {
+    try {
+
+        const user = await User.findOne({email: req.params.email});
+        if (!user) {
+            res.status(404).send("Email doesn't exist in system. Please sign up first!");
+        } else {
+            const { password, ...otherDetails } = user._doc;
+            res.status(200).send({ ...otherDetails });
+        }
+
+    } catch(err) {
+        res.status(500).json(err);
+    }
+};
+
+
 
