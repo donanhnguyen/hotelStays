@@ -10,10 +10,7 @@ function HotelShowPage () {
     const {currentUserState, 
         isRoomAvailableOrNot, 
         dateRangeArray,
-        localHost,
-        renderURL
     } = contextInfo;
-
 
     const hotel = location.state.hotel;
 

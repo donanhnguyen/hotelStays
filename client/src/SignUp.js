@@ -5,7 +5,7 @@ import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './modal.css'
 
-function SignUp (props) {
+function SignUp () {
 
 
     const contextInfo = useContext(GlobalContext);

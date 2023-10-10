@@ -1,5 +1,5 @@
-import {useState, useEffect, useContext} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useState, useContext} from 'react';
+import {useLocation} from 'react-router-dom';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import Loader from './Loader';

@@ -6,7 +6,6 @@ import Loader from './Loader';
 import HotelListing from "./HotelListing";
 import GlobalContext from './GlobalContext';
 
-
 function Search () {
 
     const navigate = useNavigate();

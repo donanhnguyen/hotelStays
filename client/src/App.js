@@ -1,6 +1,4 @@
-import {useState, useEffect} from 'react';
 import './App.css';
-import Axios from 'axios';
 import Nav from './Nav';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
@@ -10,7 +8,7 @@ import MyBookings from './MyBookings';
 import HotelShowPage from './HotelShowPage';
 import ConfirmBookingPage from './ConfirmBookingPage';
 import { GlobalProvider } from './GlobalContext';
-import { Link, BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
  

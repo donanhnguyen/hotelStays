@@ -1,5 +1,3 @@
-
-
 function Footer () {
 
     const d = new Date();

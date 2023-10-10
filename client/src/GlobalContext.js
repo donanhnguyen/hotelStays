@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 
 const GlobalContext = createContext();
 
-
 export function GlobalProvider( {children} ) {
 
     function isRoomAvailableOrNot (desiredDates, unavailableDates) {
@@ -47,7 +46,5 @@ export function GlobalProvider( {children} ) {
         </GlobalContext.Provider>
     )
 }
-
-
 
 export default GlobalContext;

@@ -1,10 +1,8 @@
-import {useState, useEffect, useContext} from 'react';
+import {useContext} from 'react';
 import './App.css';
-import Axios from 'axios';
 import {Link} from "react-router-dom"
 import { useNavigate, useLocation } from 'react-router-dom';
 import GlobalContext from './GlobalContext';
-import Modal from './Modal';
 import './modal.css';
 import {displayBookingsPageOrNotSmall, displayLogInOrLogOutButtonSmall, displaySignUpButtonOrNotSmall} from './NavBarSmallFunctions';
 

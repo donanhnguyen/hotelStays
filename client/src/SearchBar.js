@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import GlobalContext from './GlobalContext';
 

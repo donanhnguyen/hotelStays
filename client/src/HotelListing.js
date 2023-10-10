@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-import Axios from 'axios';
+import { useContext } from "react";
 import GlobalContext from './GlobalContext';
 
 function HotelListing (props) {
