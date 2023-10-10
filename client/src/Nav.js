@@ -5,8 +5,10 @@ import {Link} from "react-router-dom"
 import { useNavigate, useLocation } from 'react-router-dom';
 import GlobalContext from './GlobalContext';
 import Modal from './Modal';
+import './modal.css';
+import {displayBookingsPageOrNotSmall, displayLogInOrLogOutButtonSmall, displaySignUpButtonOrNotSmall} from './NavBarSmallFunctions';
 
-function Nav (props) {
+function Nav () {
 
   const contextInfo = useContext(GlobalContext);
   const {currentUserState, setCurrentUserState, setChosenCityState, setDateRange, setDateRangeArray} = contextInfo;
@@ -67,7 +69,6 @@ function Nav (props) {
   
   return (
     <div>
-       
           <nav className='nav-bar'>   
           <h1 className='galaxyStays'>
               HotelStays.com <i id="bed-icon" class="fa fa-hotel"></i>
@@ -78,9 +79,7 @@ function Nav (props) {
               :
               <p className='loggedin'>Not Logged In</p>
             }
-
             <ul>
- 
                 <li>
                   <Link className={`${location.pathname === '/' ? 'highlighted' : ""}`} to='/'>Home</Link>
                 </li>
@@ -95,8 +94,18 @@ function Nav (props) {
                 {displaySignUpButtonOrNot()}    
 
             </ul>
+          </nav>
+            {/* small */}
+          <nav className='nav-bar-small'>   
+            <h1 className='galaxyStays'>HS</h1>
+            <h1><Link className={`${location.pathname === '/' ? 'highlighted' : ""}`} to='/'><i class="fa fa-home" aria-hidden="true"></i></Link></h1>
+            <h1><Link className={`${location.pathname === '/search' ? 'highlighted' : ""}`} to='/search'><i class="fa fa-search" aria-hidden="true"></i></Link></h1>
+            <h1>{displayBookingsPageOrNotSmall(contextInfo.currentUserState, location)}</h1>
+            <h1>{displayLogInOrLogOutButtonSmall(contextInfo.currentUserState, logOut, location)}</h1>
+            <h1>{displaySignUpButtonOrNotSmall(contextInfo.currentUserState, location)}</h1>
 
-        </nav>
+          </nav>
+
     </div>
 
 

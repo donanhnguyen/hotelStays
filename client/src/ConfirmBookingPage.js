@@ -18,10 +18,13 @@ function ConfirmBookingPage () {
     const [isConfirmed, setIsConfirmed] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [bookingConfirmationNumber, setBookingConfirmationNumber] = useState(null);
+    const [paymentInfoReady, setPaymentInfoReady] = useState(false);
+    const [errorState, setErrorState] = useState("");
 
     var bookingDetailsObject = {
         nameOfHotel: hotel.name,
         hotelId: hotel._id,
+        picUrl: hotel.picUrl,
         nameOfRoom: room.name,
         totalPrice: dateRangeArray.length * room.price,
         city: hotel.city,
@@ -32,20 +35,25 @@ function ConfirmBookingPage () {
 
     function confirmBooking (e) {
         e.preventDefault();
-        
-        setIsLoading(true);
 
-        Axios.post(`${renderURL}/api/users/${currentUserState._id}/bookings/`, bookingDetailsObject)
-            .then((response) => {
-              setBookingConfirmationNumber(response.data._id);
-            })
-        Axios.put(`${renderURL}/api/hotels/${hotel._id}/rooms/${room._id}`, 
-        {unavailableDates: room.unavailableDates.concat(dateRangeArray)});
+        if (!paymentInfoReady) {
+            setErrorState("Please fill out all payment info fields.")
+        } else {
+            setIsLoading(true);
 
-        setTimeout(() => {
-            setIsLoading(false);
-            setIsConfirmed(true)
-        }, 3000);
+            Axios.post(`${renderURL}/api/users/${currentUserState._id}/bookings/`, bookingDetailsObject)
+                .then((response) => {
+                setBookingConfirmationNumber(response.data._id);
+                })
+            Axios.put(`${renderURL}/api/hotels/${hotel._id}/rooms/${room._id}`, 
+            {unavailableDates: room.unavailableDates.concat(dateRangeArray)});
+
+            setTimeout(() => {
+                setIsLoading(false);
+                setIsConfirmed(true)
+            }, 3000);
+        }
+
     }
 
     if (isLoading) {
@@ -66,19 +74,27 @@ function ConfirmBookingPage () {
     } else {
         return (
             <div className='confirmation-container'>
-                    <h1>Confirming booking for: {hotel.name}</h1>
-                    <h1>Duration: {dateRangeArray[0]} - {dateRangeArray[dateRangeArray.length-1]}</h1>
 
                     <img className="hotel-pic-in-confirm-page" 
                         src={hotel.picUrl}>  
                     </img>
 
+                    <h3 className='error-messages'>{errorState}</h3>
+
                     <div className='bottom-part-confirmation'>
 
-                        <PaymentForm/>
+                        <PaymentForm
+                            setPaymentInfoReady={setPaymentInfoReady}
+                            paymentInfoReady={paymentInfoReady}
+                        />
 
-                        <div>
-                            <p>Total price for {dateRangeArray.length} days: ${dateRangeArray.length * room.price}</p>
+
+                        <div className='second-confirmation-part'>
+                            <h1>Confirming booking for: {hotel.name}</h1>
+                            <h1>Duration: {dateRangeArray[0]} - {dateRangeArray[dateRangeArray.length-1]}</h1>
+                            <p>Total price for {dateRangeArray.length} nights:</p>
+                            <p>__________________</p>
+                            <p>${dateRangeArray.length * room.price}.00</p>
                             
                             <button onClick={(e) => confirmBooking(e)} className='btn btn-danger btn-lg'>Confirm Booking</button>
                         </div>

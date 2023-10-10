@@ -1,11 +1,11 @@
-import {useEffect, useContext, useReducer, useState} from 'react';
+import {useEffect, useContext, useState} from 'react';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './modal.css'
 
 function SingleBooking (props) {
 
-    const {currentUserState, localHost, renderURL} = useContext(GlobalContext);
+    const {currentUserState, renderURL} = useContext(GlobalContext);
     const {booking, myBookingsDispatch, inThePast} = props;
     const [singleRoomState, setSingleRoomState] = useState();
     const [toggledConfirm, setToggledConfirm] = useState(false);
@@ -50,11 +50,11 @@ function SingleBooking (props) {
         </div>
 
             <div className='booking-first-part'>
-                <img className="hotel-pic-my-bookings-page" src={require(`../pics/${booking.nameOfHotel.split(' ').join('')}.jpg`)}></img>
+                <img className="hotel-pic-my-bookings-page" src={booking.picUrl}></img>
             </div>
 
             <div className='booking-second-part'>
-                <h1 style={{color: 'yellow'}}>Hotel: {booking.nameOfHotel}</h1>
+                <h1>Hotel: {booking.nameOfHotel}</h1>
                 <h1>Room: {booking.nameOfRoom}</h1>
                 
                 <h1>Date booked: {booking.createdAt.split("").slice(0, 10).join("")}</h1>
@@ -64,7 +64,7 @@ function SingleBooking (props) {
                 
 
             </div>
-            <h1 className='total-price'>Total Price: <h1 className='amount-number'>${booking.totalPrice}</h1></h1>
+            <h1 className='total-price'>Total Price: <h1 className='amount-number'>${booking.totalPrice}.00</h1></h1>
 
             {!inThePast ? <button onClick={() => setToggledConfirm(true)}
                     className='cancel-reservation-button btn btn-danger btn-lg'>Cancel Reservation</button> : ""}

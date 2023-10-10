@@ -96,7 +96,7 @@ function MyBookings () {
   if (myBookingsState && myBookingsState.length === 0) {
      return (
         <div className="App">
-            <h1 style={{color: 'white'}}>You have no upcoming bookings. Book now!</h1>
+            <h1>You have no upcoming bookings. Book now!</h1>
         </div>
       ); 
   } else {
@@ -104,12 +104,12 @@ function MyBookings () {
         <div className="App">
 
           <div class='myBookings-container'>
-              <h1 style={{color: 'white', marginBottom: '30px'}}>Upcoming Bookings:</h1>
+              <h1 style={{marginBottom: '30px'}}>Upcoming Bookings:</h1>
               {displayUpcomingBookings()}
           </div>
 
           <div class='myBookings-container'>
-              <h1 style={{color: 'white', marginBottom: '30px', marginTop: '30px'}}>Past Bookings:</h1>
+              <h1 style={{marginBottom: '30px', marginTop: '30px'}}>Past Bookings:</h1>
               {displayPastBookings()}
           </div>
 

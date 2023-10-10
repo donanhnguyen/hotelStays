@@ -12,6 +12,10 @@ const BookingSchema = new mongoose.Schema({
         ref: "Hotel",
         required: true
     },
+    picUrl: {
+        type: String,
+        required: true
+    },
     nameOfRoom: {
         type: String,
         required: true
