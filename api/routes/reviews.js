@@ -3,8 +3,8 @@ import { createReview, getAllReviewsFromHotel } from "../controllers/review.js";
 
 const router = express.Router();
 
-router.get('/', getAllReviewsFromHotel)
+router.get('/:hotelId/', getAllReviewsFromHotel)
 
-router.post('/', createReview)
+router.post('/:hotelId/', createReview)
 
 export default router;
