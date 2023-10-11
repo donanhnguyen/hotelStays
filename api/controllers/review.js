@@ -4,8 +4,8 @@ import Hotel from "../models/Hotel.js";
 // GET all reviews from hotel
 export const getAllReviewsFromHotel = async (req, res) => {
     try {
-        const hotel = await Hotel.findById(req.params.hotelId);
-        res.status(200).json(hotel.reviews);
+        const hotelReviews = await Review.find({hotelId: req.params.hotelId});
+        res.status(200).json(hotelReviews);
     } catch(err) {
         res.status(500).json(err);
     }
@@ -40,7 +40,9 @@ export const createReview = async (req, res) => {
         userId,
         hotelId,
       };
-  
+      
+      const createdReview = new Review(newReview);
+      await createdReview.save();
       // Push the new review to the hotel's reviews array
       hotel.reviews.push(newReview);
   

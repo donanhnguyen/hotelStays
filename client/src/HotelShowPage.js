@@ -1,6 +1,7 @@
-import {useContext} from 'react';
+import {useContext, useState, useCallback} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import GlobalContext from './GlobalContext';
+import StarRating from './StarRating';
 
 function HotelShowPage () {
 
@@ -13,6 +14,8 @@ function HotelShowPage () {
     } = contextInfo;
 
     const hotel = location.state.hotel;
+
+    const [showReviewModal, setShowReviewModal] = useState(false);
 
     function navigateToConfirmBookingPage (room) {
         navigate('/ConfirmBookingPage', {state: {room: room, hotel: hotel} }); 
@@ -31,6 +34,10 @@ function HotelShowPage () {
         } 
     }
 
+    const randomRoomsLeftNumber = useCallback(() => {
+        return Math.floor(Math.random() * 5) + 1;
+    }, [])
+
     function displayRooms () {
         const displayedRooms = hotel.rooms.map((room, i) => {
             return (
@@ -45,11 +52,12 @@ function HotelShowPage () {
                             <h1 className='price'>${room.price}</h1>
                         </div>
                         <h1>{room.name}</h1>
-                        <p>{(Math.floor(Math.random() * 5) + 1)} rooms left</p>
+                        <p>{randomRoomsLeftNumber()} rooms left</p>
+                        <p style={{color: 'green'}}>Free Wifi & breakfast</p>
+                        <p style={{color: 'green'}}>Fully refundable</p>
                         {/* Show if the room is available here or not, based on unavailableDates array */}
                         {displayBookButtonAndIfItsAvailableOrNot(room)}
                     </div>
-
                 
                 </div>
             )
@@ -93,6 +101,32 @@ function HotelShowPage () {
 
             </div>
 
+            {/* reviews */}
+            <div className='reviews-container'>
+                <h1>{hotel.reviews.length > 0 ? hotel.reviews.length : ""} Reviews:</h1>
+
+                <p>Stayed here before? Review your experience!</p>
+                <button onClick={() => setShowReviewModal((prevState) => !prevState)} className='btn btn-primary btn-lg'>Review</button>
+
+                {hotel.reviews.length < 1 ?
+                    <p>This hotel has no reviews yet.</p>
+                : 
+                    hotel.reviews.map((review) => {
+                        const createdAt = new Date(review.createdAt);
+                        const formattedDate = `${createdAt.getMonth() + 1}-${createdAt.getDate()}-${createdAt.getFullYear()}`;
+                        
+                        return (
+                            <div className='single-review' key={review._id}>
+                                <p className="review-date">Date: {formattedDate}</p><h1 className="review-username">{review.username}</h1>
+                                <p className="review-text">{review.text}</p>
+                                <p className="review-rating">Rating: {review.rating}/5</p>
+                                <StarRating rating={review.rating}/>
+                            </div>
+                        );
+                    })
+                
+                }
+            </div>
            
             
         </div>

@@ -542,11 +542,12 @@ a:hover {
   font-weight: bold;
 }
 .single-room-displayed h1 {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
 }
 .single-room-displayed p {
   color: red;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
+  margin: 0px;
 }
 @media screen and (max-width: 1200px) {
   .single-room-displayed {
@@ -563,7 +564,86 @@ a:hover {
   .single-room-displayed div img {
     height: 210px;
   }
+  .room-info-container {
+    padding-left: 10px;
+  }
 }
+@media screen and (max-width: 515px) {
+  .single-room-displayed {
+    height: 200px;
+  }
+  .single-room-displayed h1 {
+    font-size: .8em;
+  }
+  .single-room-displayed p {
+    font-size: .8em;
+  }
+  .single-room-displayed div img {
+    height: 200px;
+  }
+}
+/* reviews */
+/* reviews */
+
+.reviews-container {
+}
+.single-review {
+  border: 1px solid #cccccc42;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: start;
+  width: 500px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.review-username {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.review-text {
+  font-size: 1.2em;
+  color: #0062e2;
+}
+
+.review-date {
+  font-size: 1em;
+  color: #888;
+}
+
+.review-rating {
+  font-size: 1em;
+  color: #ffa200;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating span {
+  display: inline-block;
+  position: relative;
+  width: 2em;
+  font-size: 1.7em;
+  color: rgb(155, 155, 155);
+}
+
+.rating span:before {
+  content: '\2605';
+  position: absolute;
+}
+@media screen and (max-width: 550px) {
+  .single-review {
+    width: 100%;
+  }
+}
+
 /* confirmation booking page */
 .confirmation-container {
   color: black;
@@ -693,3 +773,4 @@ a:hover {
   align-items: center;
 
 }
+
