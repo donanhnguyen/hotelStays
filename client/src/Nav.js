@@ -1,19 +1,22 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import './App.css';
 import {Link} from "react-router-dom"
 import { useNavigate, useLocation } from 'react-router-dom';
 import GlobalContext from './GlobalContext';
 import './modal.css';
 import {displayBookingsPageOrNotSmall, displayLogInOrLogOutButtonSmall, displaySignUpButtonOrNotSmall} from './NavBarSmallFunctions';
+import './logoutmodal.css';
 
 function Nav () {
 
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const contextInfo = useContext(GlobalContext);
   const {currentUserState, setCurrentUserState, setChosenCityState, setDateRange, setDateRangeArray} = contextInfo;
   const navigate = useNavigate();
   const location = useLocation();
 
   function logOut() {
+      setShowLogoutModal(false);
       // set current user to null
       setCurrentUserState(null);
       // set the search filters back to null
@@ -28,19 +31,7 @@ function Nav () {
   function displayLogInOrLogOutButton () {
     if (contextInfo.currentUserState) {
       return (
-        <li>        
-          <div class="modal-container">
-          <input id="modal-toggle" type="checkbox"/>
-          <button for='modal-toggle'>Log Out</button>
-          <div class="modal-backdrop">
-              <div class="modal-content">
-              <label class="modal-close" for="modal-toggle">X</label>
-              <h1>Are you sure you want to log out?</h1>
-              <label onClick={logOut}class="modal-close button" for="modal-toggle">Yes</label>
-              </div>
-          </div>
-          </div>
-        </li>
+        <li><button onClick={() => setShowLogoutModal((prevState) => !prevState)} className='btn btn-danger btn-lg logoutbutton'>Log Out</button></li>
       )
     } else {
       return (
@@ -67,10 +58,26 @@ function Nav () {
   
   return (
     <div>
+        {/* modal */}
+        {showLogoutModal ? 
+        <div className="logout-modal" id="logoutModal" onClick={() => setShowLogoutModal((prevState) => !prevState)}>
+            <div className="logout-modal-content" onClick={(e) => e.stopPropagation()}>
+                <span className="logout-close" id="closeLogoutModal" onClick={() => setShowLogoutModal((prevState) => !prevState)}>&times;</span>
+                <br></br>
+                <h2 style={{color: 'red'}}>Are you sure you want to log out?</h2>
+                <br></br>
+                <button className="logout-button" onClick={logOut}>Yes</button>
+            </div>
+        </div>
+        : 
+        ""
+        }
+      
+      {/* modal end */}
+
+          {/* large */}
           <nav className='nav-bar'>   
-          <h1 className='galaxyStays'>
-              HotelStays.com <i id="bed-icon" class="fa fa-hotel"></i>
-          </h1>
+          <h1 className='galaxyStays'>HotelStays.com <i id="bed-icon" class="fa fa-hotel"></i></h1>
             {
               currentUserState ?
               <p className='loggedin'><i class="fa fa-user-circle" aria-hidden="true"> {currentUserState.username}</i></p>
@@ -84,24 +91,23 @@ function Nav () {
                 <li>
                   <Link className={`${location.pathname === '/search' ? 'highlighted' : ""}`} to='/search'>Search Hotels</Link>
                 </li>
-
                 {displayBookingsPageOrNot()}
-                
                 {displayLogInOrLogOutButton()}
-                
                 {displaySignUpButtonOrNot()}    
-
             </ul>
           </nav>
-            {/* small */}
+
+          {/* small */}
           <nav className='nav-bar-small'>   
             <h1 className='galaxyStays'>HS</h1>
             <h1><Link className={`${location.pathname === '/' ? 'highlighted' : ""}`} to='/'><i class="fa fa-home" aria-hidden="true"></i></Link></h1>
             <h1><Link className={`${location.pathname === '/search' ? 'highlighted' : ""}`} to='/search'><i class="fa fa-search" aria-hidden="true"></i></Link></h1>
-            <h1>{displayBookingsPageOrNotSmall(contextInfo.currentUserState, location)}</h1>
-            <h1>{displayLogInOrLogOutButtonSmall(contextInfo.currentUserState, logOut, location)}</h1>
-            <h1>{displaySignUpButtonOrNotSmall(contextInfo.currentUserState, location)}</h1>
-
+            <h1>{displayBookingsPageOrNotSmall(currentUserState, location)}</h1>
+            <h1>{displayLogInOrLogOutButtonSmall(currentUserState, setShowLogoutModal, location)}</h1>
+            {!currentUserState ?
+            <h1>{displaySignUpButtonOrNotSmall(currentUserState, location)}</h1>
+            :
+            ""}
           </nav>
 
     </div>

@@ -376,7 +376,9 @@ a:hover {
 .nav-bar-small {
   display:none;
 }
-
+.logoutbutton:hover {
+  cursor: pointer;
+}
 .highlighted {
   border-bottom: 2px solid white;
 }
