@@ -1,0 +1,90 @@
+/* Modal container */
+.review-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.review-modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-width: 400px;
+    min-height: 500px;
+    padding: 20px;
+    text-align: center;
+ 
+}
+.review-modal-content h2 {
+    font-size: 1.5em;
+}
+
+/* Close button */
+.review-close {
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.review-close:hover {
+    cursor: pointer;
+    color: black;
+}
+
+/* Green button */
+.review-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 5px;
+    float: right;
+}
+.submit-review-button {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 5px;
+    align-self: flex-end; /* Push the button to the bottom */
+  }
+.review-button:hover {
+    background-color: rgb(61, 195, 61);;
+}
+
+.submit-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+  
+  .submit-rating span {
+    display: inline-block;
+    position: relative;
+    width: 2em;
+    font-size: 1.7em;
+  }
+  
+  .submit-rating span:before {
+    content: '\2605';
+    position: absolute;
+  }

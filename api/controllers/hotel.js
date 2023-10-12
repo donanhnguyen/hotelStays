@@ -12,6 +12,17 @@ export const getAllHotels = async (req, res) => {
     }
 }
 
+// get info for one hotel
+
+export const getHotel = async (req, res) => {
+    try {
+        const hotel = await Hotel.findById(req.params.hotelId);
+        res.status(200).json(hotel);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+}
+
 // POST hotel
 
 export const createHotel = async (req, res) => {
