@@ -93,6 +93,40 @@ function Home () {
         }
     }
 
+    function displayTop2Hotels () {
+        if (hotelsState) {
+           // Calculate average ratings for each hotel
+            const hotelsWithAvgRating = hotelsState.map((hotel) => {
+                const totalRating = hotel.reviews.reduce((sum, review) => sum + review.rating, 0);
+                return {
+                ...hotel,
+                avgRating: totalRating / hotel.reviews.length,
+                };
+            });
+            
+            // Sort the hotels by average rating in descending order
+            const sortedHotels = hotelsWithAvgRating.sort((a, b) => b.avgRating - a.avgRating);
+            
+            // Get the top 2 best-rated hotels
+            const top2Hotels = sortedHotels.slice(0, 2);
+            console.log(top2Hotels)
+            const displayThem = top2Hotels.map((hotel) => {
+                return (
+                    <div key={hotel.name} 
+                        className='top2hotel'
+                        onClick={() => navigate(`/hotel/${hotel._id}`, {state: {hotel: hotel}}) }
+                    >
+                            <p>{hotel.name}</p>
+                            <img className="hotel-pic-in-top2-page " src={hotel.picUrl}></img>
+                            <p>&#9733; {hotel.avgRating}/5</p>
+                    </div>
+                )
+            })
+            return displayThem;
+            
+        }
+    }
+
     return (
         <div>
             <div className="home-container">
@@ -110,10 +144,9 @@ function Home () {
                 <div className='featured-hotels-container'>
                     <h1 className='featured-hotels-heading'>Top Rated Hotels:</h1>
                     <div className='featured-hotels'>
-                        
+                        {displayTop2Hotels()}
                     </div>
                 </div>
-
 
                 <br></br>
 

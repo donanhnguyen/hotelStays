@@ -40,7 +40,7 @@ function SignUp () {
            if (formState.username === "" || formState.password === "") {
                 setErrorsState("Fields can't be blank!");
             } else if (formState.username.length < 3 || formState.password.length < 3) {
-                setErrorsState("Username & password must be at least 5 characters.");
+                setErrorsState("Username & password must be at least 3 characters.");
             } else if (!formState.email.includes("@")) {
                 setErrorsState("Invalid email format. Please include '@'.");
             } else {

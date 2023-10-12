@@ -160,6 +160,25 @@ a:hover {
   opacity: 90%;
   color: white;
 }
+.top2hotel {
+  text-align: center;
+  margin: 10px;
+  opacity: 90%;
+  color: rgb(255, 191, 0);
+  background-color: rgb(46, 95, 173);
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+}
+.hotel-pic-in-top2-page {
+  height: 70%;
+  width: 100%;
+  border-radius: 20px;
+}
+.top2hotel:hover {
+  opacity: 100%;
+  cursor: pointer;
+}
 .single-featured-hotel:hover {
   opacity: 100%;
   cursor: pointer;
@@ -266,6 +285,13 @@ a:hover {
   position: absolute;
   bottom: 5px; /* Adjust the distance from the bottom as needed */
   left: 20px; 
+}
+.averageratinginlisting {
+  position: absolute;
+  bottom: 21px; /* Adjust the distance from the bottom as needed */
+  left: 20px; 
+  color: orange;
+  font-weight: bold;
 }
 /* search bar */
 .search-bar-container {
@@ -495,7 +521,11 @@ a:hover {
   height: 500px;
   border-radius: 9px;
 }
-
+.average-rating-in-show-page {
+  color: orange;
+  font-weight: bold;
+  margin-top: 5px;
+}
 @media screen and (max-width: 1200px) {
   .hotel-pic-in-show-page {
     width: 90%;

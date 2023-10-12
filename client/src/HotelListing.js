@@ -75,6 +75,7 @@ function HotelListing (props) {
                 <StarRating rating={getAverageRating()}/>
 
                 <p className="numberofreviewsinlisting">{hotel.reviews.length} {hotel.reviews.length !== 1 ? "reviews" : "review"}</p>
+                <p className="averageratinginlisting">{getAverageRating()}/5</p>
                 <button onClick={() => navigateToHotelShowPage(hotel)} className='btn btn-warning bottom-right-button'>See Rooms</button>
             </div>
             

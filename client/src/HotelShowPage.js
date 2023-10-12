@@ -79,6 +79,33 @@ function HotelShowPage () {
         navigate('/search');
     }
 
+    function displayReviews() {
+        const displayed = hotelInfoState.reviews.map((review) => {
+            const createdAt = new Date(review.createdAt);
+            const formattedDate = `${createdAt.getMonth() + 1}-${createdAt.getDate()}-${createdAt.getFullYear()}`;
+            
+            return (
+                <div className='single-review' key={review._id}>
+                    <p className="review-date">Date: {formattedDate}</p><h1 className="review-username">{review.username}</h1>
+                    <p className="review-text">{review.text}</p>
+                    <p className="review-rating">Rating: {review.rating}/5</p>
+                    <StarRating rating={review.rating}/>
+                </div>
+            );
+        })
+        return displayed.reverse();
+    }
+
+    function getAverageRating () {
+        if (hotelInfoState && hotelInfoState.reviews.length) {
+            const totalRating = hotelInfoState.reviews.reduce((sum, review) => sum + review.rating, 0);
+            const averageRating = (totalRating / hotelInfoState.reviews.length).toFixed(1);
+            return parseFloat(averageRating); // Convert the result back to a float (optional)
+          } else {
+            return 0.0; // Default value if there are no reviews
+          }   
+    }
+
     return (
         <div className='App'>
             <div className='hotel-show-container'>
@@ -126,24 +153,12 @@ function HotelShowPage () {
 
                 <p>Stayed here before? Review your experience!</p>
                 <button onClick={() => setShowReviewModal((prevState) => !prevState)} className='btn btn-primary btn-lg'>Review</button>
-
+                <h1 className='average-rating-in-show-page'>{getAverageRating()}/5</h1>
                 {hotelInfoState && hotelInfoState.reviews.length < 1 ?
                     <p>This hotel has no reviews yet.</p>
                 : 
                    hotelInfoState ? 
-                    hotelInfoState.reviews.map((review) => {
-                            const createdAt = new Date(review.createdAt);
-                            const formattedDate = `${createdAt.getMonth() + 1}-${createdAt.getDate()}-${createdAt.getFullYear()}`;
-                            
-                            return (
-                                <div className='single-review' key={review._id}>
-                                    <p className="review-date">Date: {formattedDate}</p><h1 className="review-username">{review.username}</h1>
-                                    <p className="review-text">{review.text}</p>
-                                    <p className="review-rating">Rating: {review.rating}/5</p>
-                                    <StarRating rating={review.rating}/>
-                                </div>
-                            );
-                        })
+                    displayReviews()
                     :
                     ""
                 }
