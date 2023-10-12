@@ -235,17 +235,18 @@ a:hover {
   height: 100%;
 }
 .hotel-listing-info {
+  position: relative;
   text-align: center;
   padding: 10px 0;
 }
 .hotel-name-in-listing {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: bold;
   padding: 10px;
   color: rgb(0, 44, 110);
 }
 .hotel-listing-info h1 {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .single-hotel-listing-container:hover {
@@ -255,6 +256,16 @@ a:hover {
   width: 100%;
   height: 309px;
   border-radius: 10px;
+}
+.bottom-right-button {
+  position: absolute;
+  bottom: 10px; /* Adjust the distance from the bottom as needed */
+  right: 10px; /* Adjust the distance from the right as needed */
+}
+.numberofreviewsinlisting {
+  position: absolute;
+  bottom: 5px; /* Adjust the distance from the bottom as needed */
+  left: 20px; 
 }
 /* search bar */
 .search-bar-container {
@@ -320,10 +331,17 @@ a:hover {
   }
   .hotel-listing-info {
     text-align: center;
-    padding: 10px 0;
+    padding-top: 20px;
+    padding-bottom: 70px;
+  }
+  .hotel-pic-in-search-page {
+    height: 250px;
   }
   .hotel-listing-info h1 {
     font-size: 1.1em;
+  }
+  .hotel-listing-info p {
+    font-size: 1.0em;
   }
   .hotel-name-in-listing {
     font-size: 1.1em;
@@ -341,6 +359,9 @@ a:hover {
   @media screen and (max-width: 480px) {
     .single-hotel-listing-container {
       display: block;
+    }
+    .price {
+      font-size: 1em;
     }
   }
 }
@@ -487,7 +508,7 @@ a:hover {
     height: 290px;
   }
   .hotel-show-container h1, p {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 }
 .back-to-search-results-button {
@@ -630,13 +651,25 @@ a:hover {
   display: inline-block;
   position: relative;
   width: 2em;
-  font-size: 1.7em;
+  font-size: 1.6em;
   color: rgb(155, 155, 155);
 }
 
 .rating span:before {
   content: '\2605';
   position: absolute;
+}
+@media screen and (max-width: 750px) {
+  .rating span {
+    width: 1.8em;
+    font-size: 1.4em;
+  }
+  .hotel-listing-info p {
+    font-size: .8em;
+  }
+  .hotel-listing-info h1 {
+    font-size: 1.2em;
+  }
 }
 @media screen and (max-width: 550px) {
   .single-review {

@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import GlobalContext from './GlobalContext';
+import StarRating from "./StarRating";
 
 function HotelListing (props) {
 
     const contextInfo = useContext(GlobalContext);
-    const {dateRangeArray, isRoomAvailableOrNot, renderURL} = contextInfo;
+    const {dateRangeArray, isRoomAvailableOrNot} = contextInfo;
 
-    const {hotel, navigateToHotelShowPage, sortFilterState} = props;
+    const {hotel, navigateToHotelShowPage} = props;
 
     function getStartingPrice () {
         if (hotel.rooms.length > 0) {
@@ -30,12 +31,20 @@ function HotelListing (props) {
         }
         return numberOfAvailableRooms;
     }
+
+    function getAverageRating () {
+        if (hotel.reviews.length) {
+            const totalRating = hotel.reviews.reduce((sum, review) => sum + review.rating, 0);
+            const averageRating = (totalRating / hotel.reviews.length).toFixed(1);
+            return parseFloat(averageRating); // Convert the result back to a float (optional)
+          } else {
+            return 0.0; // Default value if there are no reviews
+          }   
+    }
     
     if (countHowManyAvailableRooms() > 0) {
       return (
-        <div 
-            className="single-hotel-listing-container" 
-        >
+        <div className="single-hotel-listing-container">
 
             {/* 33.3% */}
             <div className="image-part">
@@ -62,7 +71,11 @@ function HotelListing (props) {
                 <h1>
                     {dateRangeArray ?  <p style={{color: 'red'}}>Rooms Available: {countHowManyAvailableRooms()}</p> : <p style={{color: 'red'}}>Select dates to see available rooms.</p>}
                 </h1>
-                <button onClick={() => navigateToHotelShowPage(hotel)} className='btn btn-warning btn-lg'>See Rooms</button>
+
+                <StarRating rating={getAverageRating()}/>
+
+                <p className="numberofreviewsinlisting">{hotel.reviews.length} {hotel.reviews.length !== 1 ? "reviews" : "review"}</p>
+                <button onClick={() => navigateToHotelShowPage(hotel)} className='btn btn-warning bottom-right-button'>See Rooms</button>
             </div>
             
         </div>

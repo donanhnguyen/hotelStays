@@ -5,17 +5,23 @@ function StarRating ({rating}) {
     useEffect(() => {
         const stars = document.querySelectorAll('.rating span');
         for (let i = 4; i >= (5-rating); i--) {
-            stars[i].style.color = '#ffa200';
+            stars[i].style.color = 'orange';
         }
     }, [rating])
 
     return (
         <div className="rating">
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
+            {[5,4,3,2,1].map((index) => (
+                        <span
+                        key={index}
+                        style={{
+                            color: rating !== null && index <= rating ? 'orange' : 'gray',
+                            cursor: 'pointer',
+                        }}
+                        >
+                        &#9733;
+                        </span>
+                    ))}
         </div>
     )
 
