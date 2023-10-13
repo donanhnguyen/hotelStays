@@ -24,7 +24,7 @@ export function GlobalProvider( {children} ) {
     if (process.env.NODE_ENV === "development") {
         renderURL = "http://localhost:8800";
     } else if (process.env.NODE_ENV === 'production') {
-        renderURL = "https://galaxystays-backend.onrender.com";
+        renderURL = "https://hotelstays-backend.onrender.com";
     };
     
     return (
