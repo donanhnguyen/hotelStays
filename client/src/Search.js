@@ -125,8 +125,8 @@ function Search () {
       return (
         <div className="App">
        
-       <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
-            <div className={`modal-content`}>
+       <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`} onClick={() => setShowErrorModal(false)}>
+            <div className={`modal-content`} onClick={(e) => e.stopPropagation()}>
                 <p style={{fontSize: '28px', color: 'red'}}>Please select your date range first</p>
                 <button className="btn btn-danger btn-lg" style={{margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
             </div>

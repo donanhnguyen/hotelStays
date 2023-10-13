@@ -109,7 +109,7 @@ function Home () {
             
             // Get the top 2 best-rated hotels
             const top2Hotels = sortedHotels.slice(0, 2);
-            console.log(top2Hotels)
+
             const displayThem = top2Hotels.map((hotel) => {
                 return (
                     <div key={hotel.name} 
@@ -118,7 +118,7 @@ function Home () {
                     >
                             <p>{hotel.name}</p>
                             <img className="hotel-pic-in-top2-page " src={hotel.picUrl}></img>
-                            <p>&#9733; {hotel.avgRating}/5</p>
+                            <p>&#9733; {hotel.avgRating.toFixed(1)}/5</p>
                     </div>
                 )
             })

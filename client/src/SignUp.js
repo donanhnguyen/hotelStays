@@ -34,11 +34,10 @@ function SignUp () {
     function submitRegister (e) {
         e.preventDefault();
 
-        if (confirmPassword === "" || (formState.password !== confirmPassword)) {
-            setErrorsState("Paswords don't match.")
-        } else {
            if (formState.username === "" || formState.password === "") {
                 setErrorsState("Fields can't be blank!");
+            } else if (confirmPassword === "" || (formState.password !== confirmPassword)) {
+                setErrorsState("Paswords don't match.")
             } else if (formState.username.length < 3 || formState.password.length < 3) {
                 setErrorsState("Username & password must be at least 3 characters.");
             } else if (!formState.email.includes("@")) {
@@ -56,8 +55,7 @@ function SignUp () {
                         setErrorsState("Username already taken.")
                     })  
             } 
-        }
-         
+        
     }
 
     function setFormField (e, field) {

@@ -89,7 +89,7 @@ function HotelShowPage () {
                     <p className="review-date">Date: {formattedDate}</p><h1 className="review-username">{review.username}</h1>
                     <p className="review-text">{review.text}</p>
                     <p className="review-rating">Rating: {review.rating}/5</p>
-                    <StarRating rating={review.rating}/>
+                    <StarRating rating={(review.rating)}/>
                 </div>
             );
         })
@@ -151,9 +151,19 @@ function HotelShowPage () {
             <div className='reviews-container'>
                 <h1>{hotelInfoState && hotelInfoState.reviews.length > 0 ? hotelInfoState.reviews.length : ""} Reviews:</h1>
 
-                <p>Stayed here before? Review your experience!</p>
-                <button onClick={() => setShowReviewModal((prevState) => !prevState)} className='btn btn-primary btn-lg'>Review</button>
+                {/* review button only if user is signed in */}
+
+                {currentUserState ?
+                    <>
+                        <p>Stayed here before? Review your experience!</p>
+                        <button onClick={() => setShowReviewModal((prevState) => !prevState)} className='btn btn-primary btn-lg'>Review</button>
+                    </>
+                :
+                    <p>Please log in to review.</p>
+                }
+
                 <h1 className='average-rating-in-show-page'>{getAverageRating()}/5</h1>
+
                 {hotelInfoState && hotelInfoState.reviews.length < 1 ?
                     <p>This hotel has no reviews yet.</p>
                 : 
