@@ -837,3 +837,38 @@ a:hover {
 
 }
 
+/* mobile responsiveness */
+
+@media screen and (max-width: 500px) {
+  .hotel-pic-in-top2-page {
+    height: 200px;
+  }
+  .top2hotel {
+    height: 280px;
+  }
+  .top2hotel p {
+    margin: 0px;
+  }
+  .single-room-displayed {
+    height: 170px;
+  }
+  .single-room-displayed div img {
+    height: 170px;
+  }
+  .room-info-container button {
+    font-size: .8em;
+  }
+  .reviews-container {
+    width: 95%;
+    margin: auto;
+  }
+  .hotel-show-container {
+    width: 95%;
+  }
+  .hotel-pic-in-confirm-page {
+    height: 260px;
+  }
+  .cancel-reservation-button {
+    font-size: 1em;
+  }
+}

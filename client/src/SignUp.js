@@ -100,7 +100,7 @@ function SignUp () {
                     <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder='confirm password' required=""/>
                 </div>
 
-                <button type='submit'>Register</button>
+                <button className='btn btn-success btn-lg' type='submit'>Register</button>
 
             </form>
         </div>

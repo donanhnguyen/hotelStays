@@ -46,7 +46,12 @@ function LogIn () {
                 setErrorsState(error.response.data)
             }) 
         }
-        
+    }
+
+    function handleEnterKeyPress (e) {
+        if (e.key === 'Enter') {
+            logIn(e);
+        }
     }
 
     function logInWithGoogle (email) {
@@ -63,15 +68,24 @@ function LogIn () {
             })
     }
 
-    function setUsername(e) {
+    function setField (e) {
         setFormState((prevState) => {
-            return {...prevState, username: e.target.value}
+            return {...prevState, [e.target.name] : e.target.value}
         })
     }
-    function setPassword(e) {
-        setFormState((prevState) => {
-            return {...prevState, password: e.target.value}
-        })
+
+    function logInAsTest () {
+        Axios.post(`${renderURL}/api/users/test/`, {password: 'test'})
+            .then((response) => {
+                contextInfo.setCurrentUserState(response.data);
+                setSuccessfulLogIn(true);
+                setTimeout(() => {
+                    navigate('/');  
+                }, 1000)
+            })
+            .catch((error) => {
+                setErrorsState(error.response.data)
+            }) 
     }
 
   return (
@@ -95,14 +109,15 @@ function LogIn () {
 
             <form onSubmit={logIn}>
                 <div className="user-box">
-                <input onChange={(e) => setUsername(e)} type="text" placeholder='username' required=""/>
+                <input onChange={(e) => setField(e)} type="text" placeholder='username' required="" name="username"/>
                 </div>
                 <div className="user-box">
-                <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
+                <input onChange={(e) => setField(e)} onKeyDown={handleEnterKeyPress} type="password" placeholder='password' required="" name="password"/>
                 </div>
-                <button type="submit">Log In</button>
-
+                <button className='btn btn-primary btn-lg' type="submit">Log In</button>
             </form>
+
+            <button onClick={logInAsTest} className='btn btn-secondary btn-lg'>Log in as Test</button>
 
             <div className='google-login'>
                 <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_LOGIN_CLIENT_ID}>

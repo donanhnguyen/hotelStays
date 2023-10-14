@@ -72,7 +72,7 @@
 
 @media screen and (max-width: 1150px) {
     .bottom-part-confirmation {
-        display: bloack;
+        display: block;
         width: 92%;
     
       }

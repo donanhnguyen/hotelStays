@@ -1,5 +1,5 @@
-import {useState, useContext} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useState, useContext, useEffect} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import Loader from './Loader';
@@ -8,6 +8,7 @@ import PaymentForm from './PaymentForm';
 
 function ConfirmBookingPage () {
     const location = useLocation();
+    const navigate = useNavigate();
     const contextInfo = useContext(GlobalContext);
     const {currentUserState, 
         dateRangeArray,
@@ -20,18 +21,25 @@ function ConfirmBookingPage () {
     const [bookingConfirmationNumber, setBookingConfirmationNumber] = useState(null);
     const [paymentInfoReady, setPaymentInfoReady] = useState(false);
     const [errorState, setErrorState] = useState("");
+    const [bookingDetailsObject, setBookingDetailsObject] = useState({});
 
-    var bookingDetailsObject = {
-        nameOfHotel: hotel.name,
-        hotelId: hotel._id,
-        picUrl: hotel.picUrl,
-        nameOfRoom: room.name,
-        totalPrice: dateRangeArray.length * room.price,
-        city: hotel.city,
-        dates: dateRangeArray,
-        userId: currentUserState._id,
-        roomId: room._id
-    }
+    useEffect(() => {
+        if (!currentUserState) {
+            navigate("/")
+        } else {
+            setBookingDetailsObject({
+                nameOfHotel: hotel.name,
+                hotelId: hotel._id,
+                picUrl: hotel.picUrl,
+                nameOfRoom: room.name,
+                totalPrice: dateRangeArray.length * room.price,
+                city: hotel.city,
+                dates: dateRangeArray,
+                userId: currentUserState._id,
+                roomId: room._id
+            })
+        }
+    }, [])
 
     function confirmBooking (e) {
         e.preventDefault();

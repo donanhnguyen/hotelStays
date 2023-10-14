@@ -99,7 +99,7 @@ function SearchBar (props) {
           </select>
 
           <button onClick={applySearchFilters}
-            className='btn btn-primary'
+            className='btn btn-primary btn-lg'
             >Search
           </button>
       </div>

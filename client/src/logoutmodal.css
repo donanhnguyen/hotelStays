@@ -58,3 +58,9 @@
 .logout-button:hover {
     background-color: rgb(61, 195, 61);;
 }
+
+@media screen and (max-width: 500px) {
+    .logout-modal-content {
+        width: 95%;
+    }
+  }
