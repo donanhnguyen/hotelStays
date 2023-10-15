@@ -12,13 +12,11 @@
   }
   @media screen and (max-width: 1300px) {
     .login-box {
-      margin-top: 0px;
+      margin-top: 40px;
     }
   }
   @media screen and (max-width: 360px) {
-    .login-box {
-      margin-top: 0px;
-    }
+    
   }
   .login-box h2 {
     margin: 0 0 30px;
@@ -65,5 +63,6 @@
   @media screen and (max-width: 500px) {
     .login-box {
       width: 95%;
+      margin-top: 70px;
     }
   }
