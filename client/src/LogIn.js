@@ -114,7 +114,7 @@ function LogIn () {
                 <div className="user-box">
                 <input onChange={(e) => setField(e)} onKeyDown={handleEnterKeyPress} type="password" placeholder='password' required="" name="password"/>
                 </div>
-                <button className='btn btn-primary btn-lg' type="submit">Log In</button>
+                <button style={{marginBottom: '4px'}} className='btn btn-primary btn-lg' type="submit">Log In</button>
             </form>
 
             <button onClick={logInAsTest} className='btn btn-secondary btn-lg'>Log in as Test</button>

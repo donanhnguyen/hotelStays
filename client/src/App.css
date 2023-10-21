@@ -5,6 +5,14 @@ body {
   color: black;
 }
 
+::placeholder {
+  color: rgba(255, 255, 255, 0.483);
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: rgba(255, 255, 255, 0.483);
+}
 
 /*  */
 .App {
