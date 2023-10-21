@@ -5,7 +5,7 @@ import GlobalContext from './GlobalContext';
 function SearchBar (props) {
 
   const contextInfo = useContext(GlobalContext);
-  const {dateRange, setDateRange, dateRangeArray, setDateRangeArray} = contextInfo;
+  const {dateRange, setDateRange, setDateRangeArray} = contextInfo;
   const [showErrorModal, setShowErrorModal] = useState(false);
 
   const {allcitys, 
@@ -96,6 +96,8 @@ function SearchBar (props) {
             <option>None</option>
             <option>Price: Low to High</option>
             <option>Price: High to Low</option>
+            <option>Rating: Low to High</option>
+            <option>Rating: High to Low</option>
           </select>
 
           <button onClick={applySearchFilters}

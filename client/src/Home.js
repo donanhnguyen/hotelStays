@@ -98,10 +98,17 @@ function Home () {
            // Calculate average ratings for each hotel
             const hotelsWithAvgRating = hotelsState.map((hotel) => {
                 const totalRating = hotel.reviews.reduce((sum, review) => sum + review.rating, 0);
-                return {
-                ...hotel,
-                avgRating: totalRating / hotel.reviews.length,
-                };
+                if (hotel.reviews.length) {
+                    return {
+                        ...hotel,
+                        avgRating: totalRating / hotel.reviews.length,
+                    };
+                } else {
+                    return {
+                        ...hotel,
+                        avgRating: 0
+                    };
+                }
             });
             
             // Sort the hotels by average rating in descending order
@@ -109,7 +116,6 @@ function Home () {
             
             // Get the top 2 best-rated hotels
             const top2Hotels = sortedHotels.slice(0, 2);
-
             const displayThem = top2Hotels.map((hotel) => {
                 return (
                     <div key={hotel.name} 

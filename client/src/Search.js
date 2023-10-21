@@ -67,8 +67,24 @@ function Search () {
     }
 
     function filterHotels(hotels, cityFilter, sortFilter) {
-        let filteredHotels = hotels;
-      
+        
+        let hotelsWithAvgRating = hotels.map((hotel) => {
+            const totalRating = hotel.reviews.reduce((sum, review) => sum + review.rating, 0);
+            if (hotel.reviews.length) {
+                return {
+                    ...hotel,
+                    avgRating: totalRating / hotel.reviews.length,
+                };
+            } else {
+                return {
+                    ...hotel,
+                    avgRating: 0
+                };
+            }
+        });
+
+        let filteredHotels = hotelsWithAvgRating;
+
         if (cityFilter && cityFilter !== "No Filter") {
           filteredHotels = filteredHotels.filter((hotel) => hotel.city === cityFilter);
         }
@@ -95,7 +111,10 @@ function Search () {
                 }, b.rooms[0]);
                 return cheapestRoomForB.price - cheapestRoomForA.price;
             })
-
+        } else if (sortFilter === "Rating: Low to High") {
+            filteredHotels.sort((a, b) => {return a.avgRating - b.avgRating;})
+        } else if (sortFilter === "Rating: High to Low") {
+            filteredHotels.sort((a, b) => {return b.avgRating - a.avgRating;})
         }
       
         return filteredHotels;
