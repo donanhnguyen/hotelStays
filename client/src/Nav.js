@@ -102,7 +102,9 @@ function Nav () {
             <h1 className='galaxyStays'>HS</h1>
             <h1><Link className={`${location.pathname === '/' ? 'highlighted' : ""}`} to='/'><i class="fa fa-home" aria-hidden="true"></i></Link></h1>
             <h1><Link className={`${location.pathname === '/search' ? 'highlighted' : ""}`} to='/search'><i class="fa fa-search" aria-hidden="true"></i></Link></h1>
-            <h1>{displayBookingsPageOrNotSmall(currentUserState, location)}</h1>
+            
+            {currentUserState &&  <h1>{displayBookingsPageOrNotSmall(currentUserState, location)}</h1>}
+           
             <h1>{displayLogInOrLogOutButtonSmall(currentUserState, setShowLogoutModal, location)}</h1>
             {!currentUserState ?
             <h1>{displaySignUpButtonOrNotSmall(currentUserState, location)}</h1>

@@ -537,8 +537,13 @@ a:hover {
 }
 @media screen and (max-width: 1200px) {
   .hotel-pic-in-show-page {
-    width: 90%;
+    width: 95%;
     height: 450px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .hotel-show-container {
+    width: 95%;
   }
 }
 @media screen and (max-width: 600px) {
@@ -611,12 +616,28 @@ a:hover {
 }
 @media screen and (max-width: 1200px) {
   .single-room-displayed {
+    display: block;
     width: 90%;
+    height: auto;
+  }
+  .single-room-displayed div img {
+    height: auto;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0px;
+  }
+  .room-info-container {
+    display: block;
+    padding: 0px;
+  }
+  .price-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 0px;
   }
 }
 @media screen and (max-width: 650px) {
   .single-room-displayed {
-    height: 210px;
+    height: auto;
   }
   .single-room-displayed h1 {
     font-size: 1.2em;
@@ -624,23 +645,17 @@ a:hover {
   .single-room-displayed div img {
     height: 210px;
   }
-  .room-info-container {
-    padding-left: 10px;
-  }
+
 }
 @media screen and (max-width: 515px) {
-  .single-room-displayed {
-    height: 200px;
-  }
+
   .single-room-displayed h1 {
-    font-size: .8em;
+    font-size: .9em;
   }
   .single-room-displayed p {
-    font-size: .8em;
+    font-size: .9em;
   }
-  .single-room-displayed div img {
-    height: 200px;
-  }
+
 }
 /* reviews */
 /* reviews */
@@ -858,12 +873,7 @@ a:hover {
   .top2hotel p {
     margin: 0px;
   }
-  .single-room-displayed {
-    height: 170px;
-  }
-  .single-room-displayed div img {
-    height: 170px;
-  }
+
   .room-info-container button {
     font-size: .8em;
   }

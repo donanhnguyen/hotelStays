@@ -4,6 +4,7 @@ import GlobalContext from './GlobalContext';
 import StarRating from './StarRating';
 import ReviewHotelModal from './ReviewHotelModal';
 import Axios from 'axios';
+import {Image} from 'react-bootstrap'
 
 function HotelShowPage () {
 
@@ -51,11 +52,12 @@ function HotelShowPage () {
     function displayRooms () {
         if (hotelInfoState) {
            const displayedRooms = hotelInfoState.rooms.map((room, i) => {
+            console.log(i)
             return (
                 <div className='single-room-displayed' key={room + i}>
 
                     <div>
-                        <img src={'https://img.freepik.com/free-photo/luxury-classic-modern-bedroom-suite-hotel_105762-1787.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1696809600&semt=ais'} alt={room.name} />
+                        <Image src={require(`../pics/hotelRoom${i}.jpg`)} alt={room.name} fluid/>
                     </div>
 
                     <div id="room-info" className="room-info-container">
