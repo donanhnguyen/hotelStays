@@ -211,9 +211,9 @@ a:hover {
   height: 350px;
   width: 320px;
   margin: 5px;
-  color: rgb(0, 93, 207);
+  color: white;
   border-radius: 20px;
-  background-color: rgba(196, 228, 251, 0.773);
+  background-color: rgb(46, 95, 173);
   opacity: 92%;
 }
 .single-city-container:hover {
@@ -326,6 +326,12 @@ a:hover {
   margin-bottom: 10px;
   min-width: 250px;
 }
+@media screen and (max-width: 1800px) {
+  .single-hotel-listing-container {
+    display: block;
+  }
+}
+
 
 @media screen and (max-width: 1350px) {
   .search-container {

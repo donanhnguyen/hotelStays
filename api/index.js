@@ -38,7 +38,6 @@ var corsOptions = {
 // var corsOptions = {
 //     origin: "http://localhost:3000"
 // }
-
 app.use(express.json());
 app.use(cors(corsOptions));
 

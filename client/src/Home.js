@@ -5,6 +5,7 @@ import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './cardflip.css';
 import Footer from './Footer';
+import HeroSection from './HeroSection';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -135,9 +136,11 @@ function Home () {
 
     return (
         <div>
+            
+            <HeroSection />
+
             <div className="home-container">
                 
-
                 <br></br>
 
                 <div className='featured-hotels-container'>

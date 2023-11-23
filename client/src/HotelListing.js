@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import GlobalContext from './GlobalContext';
 import StarRating from "./StarRating";
+import {Image} from 'react-bootstrap'
 
 function HotelListing (props) {
 
@@ -48,7 +49,7 @@ function HotelListing (props) {
 
             {/* 33.3% */}
             <div className="image-part">
-                <img className="hotel-pic-in-search-page" src={hotel.picUrl}></img>
+                <Image src={hotel.picUrl} style={{borderRadius: '10px', height: '100%', width: '100%', maxHeight: '400px'}} fluid></Image>
             </div>
             
             
