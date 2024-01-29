@@ -3,7 +3,7 @@
     background-color: rgb(46, 95, 173);
     width: 400px;
     height: 300px;
-    border-radius: 20px;
+    border-radius: 10px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
   

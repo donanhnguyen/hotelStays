@@ -105,12 +105,12 @@ function MyBookings () {
 
           <div class='myBookings-container'>
               <h1 style={{marginBottom: '30px'}}>Upcoming Bookings:</h1>
-              {displayUpcomingBookings()}
+              {displayUpcomingBookings().length == 0 ? <p>You have no upcoming bookings</p> : displayUpcomingBookings()}
           </div>
 
           <div class='myBookings-container'>
               <h1 style={{marginBottom: '30px', marginTop: '30px'}}>Past Bookings:</h1>
-              {displayPastBookings()}
+              {displayPastBookings().length == 0 ? <p>You have no past bookings</p> : displayPastBookings()}
           </div>
 
         </div>

@@ -49,7 +49,7 @@ function HotelListing (props) {
 
             {/* 33.3% */}
             <div className="image-part">
-                <Image src={hotel.picUrl} style={{borderRadius: '10px', height: '100%', width: '100%', maxHeight: '400px'}} fluid></Image>
+                <Image src={hotel.picUrl} style={{height: '100%', width: '100%', maxHeight: '400px'}} fluid></Image>
             </div>
             
             
