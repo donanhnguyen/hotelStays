@@ -12,7 +12,7 @@ Make sure you have the following installed on your machine:
 
 ## Project Structure
 
-hotelStays/
+```hotelStays/
 │
 ├── api/         # Backend (Node.js + Express)
 │   ├── .env     # Environment variables (including MongoDB URI and PORT)
@@ -20,24 +20,24 @@ hotelStays/
 │
 └── client/      # Frontend (React)
     └── ...      # Other frontend-related files
-    
+ ```
 Setup Instructions:
 
 Step 1: Clone the repository
 
-git clone https://github.com/donanhnguyen/hotelStays.git
-cd hotelStays
+```git clone https://github.com/donanhnguyen/hotelStays.git```
+```cd hotelStays```
 
 Step 2: Install dependencies
 Install dependencies for both the api and client folders.
 
 # Navigate to the api folder and install backend dependencies
-cd api
-npm install
+```cd api```
+```npm install```
 
 # Navigate to the client folder and install frontend dependencies
-cd ../client
-npm install
+```cd ../client```
+```npm install```
 
 Step 3: Set up MongoDB
 You can either use a local MongoDB instance or create a cloud-based database using MongoDB Atlas.
@@ -52,13 +52,13 @@ Replace <username> and <password> with your MongoDB Atlas credentials, and repla
 Step 4: Create .env file
 In the api folder, create a .env file to store environment variables.
 
-cd ../api
-touch .env
+```cd ../api```
+```touch .env```
 
 Add the following variables to the .env file:
 
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/hotelStays?retryWrites=true&w=majority
-PORT=8800
+```MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/hotelStays?retryWrites=true&w=majority```
+```PORT=8800```
 Make sure to replace <username>, <password>, and the database name in the MONGO_URI as appropriate.
 
 Step 5: Run the app
@@ -66,15 +66,15 @@ Now, you need to run both the backend (api) and frontend (client) simultaneously
 
 Start the Backend (API)
 
-cd api
-npm start
+```cd api```
+```npm start```
 This will run the backend server on http://localhost:8800.
 
 Start the Frontend (Client)
 Open a new terminal window or tab, then run:
 
-cd client
-npm start
+```cd client```
+```npm start```
 This will run the React frontend on http://localhost:3000.
 
 Step 6: Access the Application
